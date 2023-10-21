@@ -1,7 +1,6 @@
 import Photo from "./aboutImg.jpg";
 import Image from "next/image";
-import Lines from "./Lines";
-import Square from "./Square";
+import Square from "../Square/Square";
 import styles from "./About.module.css";
 
 export const About = () => {
