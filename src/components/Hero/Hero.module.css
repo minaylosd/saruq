@@ -1,104 +1,105 @@
 .image__wrapper {
-    position: relative;
-    width: calc(var(--width-k) * 1446);
-    height: calc(var(--width-k) * 946);
-    margin: 0 0 auto auto;
+  position: relative;
+  width: calc(var(--width-k) * 1446);
+  height: calc(var(--width-k) * 946);
+  margin: 0 0 auto auto;
 }
 
 .card__wrapper {
-    display: flex;
-    position: absolute;
-    top: calc(var(--width-k) * 275);
-    left: calc(var(--width-k) * 212);
+  display: flex;
+  position: absolute;
+  top: calc(var(--width-k) * 275);
+  left: calc(var(--width-k) * 212);
 }
 
 .rotated {
-    writing-mode: vertical-lr;
-    transform: scale(-1, -1);
-    color: var(--primary);
-    font-size: calc(var(--width-k) * 24);
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: calc(var(--width-k) * 41.16);
-    text-transform: uppercase;
-    width: max-content;
-    height: max-content;
-    margin-top: calc(var(--width-k) * -41.16);
-    margin-right: calc(var(--width-k) * 13);
+  writing-mode: vertical-lr;
+  transform: scale(-1, -1);
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: calc(var(--width-k) * 41.16);
+  text-transform: uppercase;
+  width: max-content;
+  height: max-content;
+  margin-top: calc(var(--width-k) * -41.16);
+  margin-right: calc(var(--width-k) * 13);
 }
 
 .rectangle {
-    background-color: var(--primary);
-    width: calc(var(--width-k) * 29);
-    height: calc(var(--width-k) * 403);
-    margin-right: calc(var(--width-k) * 24);
+  background-color: var(--primary);
+  width: calc(var(--width-k) * 29);
+  height: calc(var(--width-k) * 403);
+  margin-right: calc(var(--width-k) * 24);
 }
 
 .card {
-    width: calc(var(--width-k) * 1069);
-    height: calc(var(--width-k) * 403);
-    padding-top: calc(var(--width-k) * 59);
-    padding-left: calc(var(--width-k) * 63);
-    background-color: var(--white);
-    border: var(--width-k) solid rgba(0, 0, 0, 0.10);
-    box-shadow: calc(var(--width-k) * 12) calc(var(--width-k) * 14) calc(var(--width-k) * 27) 0px rgba(0, 0, 0, 0.23);
+  width: calc(var(--width-k) * 1069);
+  height: calc(var(--width-k) * 403);
+  padding-top: calc(var(--width-k) * 59);
+  padding-left: calc(var(--width-k) * 63);
+  background-color: var(--white);
+  border: var(--width-k) solid rgba(0, 0, 0, 0.1);
+  box-shadow: calc(var(--width-k) * 12) calc(var(--width-k) * 14)
+    calc(var(--width-k) * 27) 0px rgba(0, 0, 0, 0.23);
 }
 
 .main_heading {
-    font-size: calc(var(--width-k) * 87.774);
+  font-size: calc(var(--width-k) * 87.774);
 }
 
 .sub_heading {
-    color: var(--primary);
-    font-size: calc(var(--width-k) * 48.167);
-    font-style: normal;
-    font-weight: 200;
-    line-height: normal;
-    text-transform: uppercase;
-    margin-bottom: calc(var(--width-k) * 7);
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 48.167);
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: calc(var(--width-k) * 7);
 }
 
 .divider {
-    width: calc(var(--width-k) * 709);
-    height: calc(var(--width-k) * 2);
-    background-color: var(--tertiary-faded);
-    margin-bottom: calc(var(--width-k) * 14);
+  width: calc(var(--width-k) * 709);
+  height: calc(var(--width-k) * 2);
+  background-color: var(--tertiary-faded);
+  margin-bottom: calc(var(--width-k) * 14);
 }
 
 .motto {
-    color: var(--secondary-faded);
-    font-size: calc(var(--width-k) * 24);
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    text-transform: uppercase;
-    margin-bottom: calc(var(--width-k) * 24);
+  color: var(--secondary-faded);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: calc(var(--width-k) * 24);
 }
 
 .btn__wrapper {
-    display: flex;
-    gap: calc(var(--width-k) * 16);
+  display: flex;
+  gap: calc(var(--width-k) * 16);
 }
 
 .main_btn {
-    background-color: var(--btn);
-    color: var(--white);
-    border: var(--width-k) solid var(--btn);
+  background-color: var(--btn);
+  color: var(--white);
+  border: var(--width-k) solid var(--btn);
 }
 
 .main_btn:active {
-    background-color: var(--white);
-    color: var(--btn);
+  background-color: var(--white);
+  color: var(--btn);
 }
 
 .sub_btn {
-    background-color: var(--white);
-    color: var(--btn);
-    border: var(--width-k) solid var(--btn);
+  background-color: var(--white);
+  color: var(--btn);
+  border: var(--width-k) solid var(--btn);
 }
 
 .sub_btn:active {
-    background-color: var(--btn);
-    color: var(--white);
+  background-color: var(--btn);
+  color: var(--white);
 }

@@ -23,7 +23,7 @@ export const Goal = () => {
         <div className={styles.image}>
           <Image src={Photo} fill={true} />
           <div className={styles.card}>
-            <p className={styles.subHeading}>Orders below 10 000$ </p>
+            <p className={styles.subHeading}>Orders below 10 000$</p>
             <p className={styles.description}>
               Aiming to expand its client base, the company offers collaboration
               with UAE, provided certain criteria are met, with order volume

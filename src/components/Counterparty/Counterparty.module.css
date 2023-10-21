@@ -1,0 +1,85 @@
+.content {
+  display: flex;
+  gap: calc(var(--width-k) * 48);
+  align-items: center;
+  width: calc(var(--width-k) * 1782);
+  margin: 0 calc(var(--width-k) * 21) auto auto;
+  padding-top: calc(var(--width-k) * 202);
+}
+
+.label {
+  position: relative;
+  width: calc(var(--width-k) * 574);
+  height: calc(var(--width-k) * 198.18);
+  padding: calc(var(--width-k) * 24);
+  background: linear-gradient(to right, var(--primary) 4px, transparent 4px) 0 0,
+    linear-gradient(to left, var(--primary) 4px, transparent 4px) 100% 100%,
+    linear-gradient(to bottom, var(--primary) 4px, transparent 4px) 0 0,
+    linear-gradient(to top, var(--primary) 4px, transparent 4px) 100% 100%;
+
+  background-repeat: no-repeat;
+  background-size: calc(var(--width-k) * 47) calc(var(--width-k) * 47);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.label__txt {
+  color: var(--primary);
+  text-align: right;
+  font-size: calc(var(--width-k) * 62.63);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.rectangle {
+  position: absolute;
+  top: calc(var(--width-k) * -26);
+  right: calc(var(--width-k) * 39);
+  width: calc(var(--width-k) * 141);
+  height: calc(var(--width-k) * 52);
+}
+
+.image {
+  position: relative;
+  width: calc(var(--width-k) * 1160);
+  height: calc(var(--width-k) * 452);
+}
+
+.card {
+  position: absolute;
+  top: calc(var(--width-k) * 322);
+  left: calc(var(--width-k) * 53);
+  z-index: 110;
+  background-color: var(--white);
+  width: calc(var(--width-k) * 1009);
+  height: calc(var(--width-k) * 236);
+  padding-top: calc(var(--width-k) * 33);
+  padding-left: calc(var(--width-k) * 39);
+  padding-right: calc(var(--width-k) * 34);
+  box-shadow: calc(var(--width-k) * 12) calc(var(--width-k) * 14)
+    calc(var(--width-k) * 14) 0px rgba(0, 0, 0, 0.15);
+}
+
+.subHeading {
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 27.194);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: calc(var(--width-k) * 17);
+}
+
+.description {
+  color: var(--txt);
+  font-size: calc(var(--width-k) * 20);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: calc(var(--width-k) * 1.1);
+}

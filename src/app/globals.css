@@ -2,13 +2,13 @@
   --white: rgba(255, 255, 255, 1);
 
   --primary: rgba(74, 26, 97, 1);
-  --secondary-faded: rgba(112, 42, 203, 0.51); 
+  --secondary-faded: rgba(112, 42, 203, 0.51);
   --tertiary-faded: rgba(112, 42, 203, 0.42);
 
   --btn: rgba(36, 11, 51, 1);
   --txt: rgba(34, 31, 35, 1);
   --nav: rgba(193, 158, 239, 1);
-  
+
   --width-k: calc(100vw / 1920);
   --mob-k: calc(100vw / 375);
 }
@@ -48,9 +48,8 @@ button {
 
 aside {
   position: fixed;
-  top:0;
-  left:0;
-  /* width: calc(var(--width-k) * 100); */
+  top: 0;
+  left: 0;
   width: fit-content;
   min-width: calc(var(--width-k) * 100);
   height: 100vh;

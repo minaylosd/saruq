@@ -1,48 +1,48 @@
 .logo {
-    width: calc(var(--width-k) * 72);
-    height: calc(var(--width-k) * 98);
-    margin-top: calc(var(--width-k) * 23);
-    margin-left: auto;
-    margin-right: auto;
+  width: calc(var(--width-k) * 72);
+  height: calc(var(--width-k) * 98);
+  margin-top: calc(var(--width-k) * 23);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .burger {
-    width: calc(var(--width-k) * 21);
-    height: calc(var(--width-k) * 31);
-    margin-top: calc(var(--width-k) * 379);
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
+  width: calc(var(--width-k) * 21);
+  height: calc(var(--width-k) * 31);
+  margin-top: calc(var(--width-k) * 379);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }
 
 .arrow {
-    width: calc(var(--width-k) * 24);
-    height: calc(var(--width-k) * 24);
-    padding: calc(var(--width-k) * 6) calc(var(--width-k) * 5);
-    margin-top: calc(var(--width-k) * 23);
-    margin-left: auto;
-    margin-right: 0;
-    margin-bottom: calc(var(--width-k) * 11);
+  width: calc(var(--width-k) * 24);
+  height: calc(var(--width-k) * 24);
+  padding: calc(var(--width-k) * 6) calc(var(--width-k) * 5);
+  margin-top: calc(var(--width-k) * 23);
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: calc(var(--width-k) * 11);
 }
 
 .menu {
-    margin-top: calc(var(--width-k) * 293.86);
-    margin-left: calc(var(--width-k) * 24);
-    margin-right: calc(var(--width-k) * 24);
+  margin-top: calc(var(--width-k) * 293.86);
+  margin-left: calc(var(--width-k) * 24);
+  margin-right: calc(var(--width-k) * 24);
 }
 
 .nav {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--width-k) * 23);
-    text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--width-k) * 23);
+  text-align: right;
 }
 
 .link {
-    color: var(--primary);
-    font-size: calc(var(--width-k) * 24);
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    text-decoration: none;
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-decoration: none;
 }
