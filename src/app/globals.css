@@ -47,7 +47,7 @@ button {
 }
 
 aside {
-  position:absolute;
+  position: fixed;
   top:0;
   left:0;
   /* width: calc(var(--width-k) * 100); */
