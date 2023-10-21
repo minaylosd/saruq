@@ -10,7 +10,7 @@ export const Sidebar = () => {
         <Logo />
       </div>
       <div className={styles.burger}>
-        <Burger></Burger>
+        <Burger />
       </div>
       {/* <div className={styles.menu}>
         <div className={styles.arrow}>

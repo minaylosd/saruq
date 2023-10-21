@@ -8,7 +8,7 @@ export const Counterparty = () => {
     <section>
       <div className={styles.content}>
         <div className={styles.image}>
-          <Image src={Photo} fill={true} />
+          <Image src={Photo} fill={true} alt="Counterparty" />
           <div className={styles.card}>
             <p className={styles.subHeading}>Deals from 20 000$</p>
             <p className={styles.description}>

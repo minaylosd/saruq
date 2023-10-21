@@ -21,7 +21,7 @@ export const Goal = () => {
           <div className={styles.label__txt}>client</div>
         </div>
         <div className={styles.image}>
-          <Image src={Photo} fill={true} />
+          <Image src={Photo} fill={true} alt="Goal" />
           <div className={styles.card}>
             <p className={styles.subHeading}>Orders below 10 000$</p>
             <p className={styles.description}>

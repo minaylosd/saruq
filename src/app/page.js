@@ -7,11 +7,11 @@ import { Counterparty } from "@/components/Counterparty/Counterparty";
 export default function Home() {
   return (
     <main>
-      <Sidebar></Sidebar>
-      <Hero></Hero>
-      <About></About>
-      <Goal></Goal>
-      <Counterparty></Counterparty>
+      <Sidebar />
+      <Hero />
+      <About />
+      <Goal />
+      <Counterparty />
     </main>
   );
 }

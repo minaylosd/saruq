@@ -6,7 +6,7 @@ export const Hero = () => {
   return (
     <section>
       <div className={styles.image__wrapper}>
-        <Image src={Photo} fill={true} />
+        <Image src={Photo} fill={true} alt="Hero image" />
       </div>
       <div className={styles.card__wrapper}>
         <div className={styles.rotated}>Emirates</div>
