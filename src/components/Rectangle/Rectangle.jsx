@@ -6,7 +6,7 @@ const Rectangle = () => (
     viewBox="0 0 141 52"
     fill="none"
   >
-    <g clipPath="url(#a)">
+    <g>
       <path
         stroke="#4A1A61"
         style={{ strokeWidth: "calc(var(--width-k) * 2)" }}
