@@ -90,7 +90,6 @@
 
 .heading__line {
   background-color: var(--primary);
-  /* width: calc(var(--width-k) * 317); */
   width: 100%;
   height: calc(var(--width-k) * 1);
 }

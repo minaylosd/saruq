@@ -1,0 +1,115 @@
+.content {
+  display: flex;
+  gap: calc(var(--width-k) * 87);
+  align-items: center;
+  width: calc(var(--width-k) * 1820);
+  margin: 0 0 auto auto;
+  padding-top: calc(var(--width-k) * 188);
+}
+
+.image {
+  position: relative;
+  z-index: 10;
+  width: calc(var(--width-k) * 1820);
+  height: calc(var(--width-k) * 492);
+}
+
+.index {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.heading__wrapper {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--width-k) * 26);
+  width: calc(var(--width-k) * 1820);
+  margin-top: calc(var(--width-k) * 44);
+}
+
+.heading__line {
+  background-color: var(--white);
+  width: calc(var(--width-k) * 155);
+  height: calc(var(--width-k) * 1);
+}
+
+.heading__line:last-child {
+  width: calc(var(--width-k) * 1080);
+}
+
+.heading {
+  color: var(--white);
+  font-size: calc(var(--width-k) * 62.63);
+  white-space: nowrap;
+}
+
+.description {
+  color: var(--white);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-left: calc(var(--width-k) * 181);
+  margin-bottom: calc(var(--width-k) * 100);
+}
+
+.card__wrapper {
+  display: flex;
+  gap: calc(var(--width-k) * 52);
+  margin-left: calc(var(--width-k) * 181);
+}
+
+.card {
+  position: relative;
+  padding: calc(var(--width-k) * 33) calc(var(--width-k) * 24.5)
+    calc(var(--width-k) * 17) calc(var(--width-k) * 24.5);
+  background-color: var(--white);
+  border-radius: calc(var(--width-k) * 10);
+  width: calc(var(--width-k) * 342);
+  height: calc(var(--width-k) * 425);
+  background: linear-gradient(
+    to bottom,
+    var(--white) calc(var(--width-k) * 363),
+    rgba(33, 33, 33, 1) calc(var(--width-k) * 62)
+  );
+  box-shadow: calc(var(--width-k) * 12) calc(var(--width-k) * 14)
+    calc(var(--width-k) * 14) 0px rgba(0, 0, 0, 0.15);
+  border: var(--width-k) solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card__number {
+  color: rgba(33, 33, 33, 1);
+  font-size: calc(var(--width-k) * 30);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: calc(var(--width-k) * 17);
+}
+
+.card__txt {
+  color: rgba(33, 33, 33, 1);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.card__bottom {
+  position: absolute;
+  bottom: calc(var(--width-k) * 17);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--white);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+}
