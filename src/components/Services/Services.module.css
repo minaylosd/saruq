@@ -1,0 +1,112 @@
+.content {
+  margin: 0 calc(var(--width-k) * 125) auto auto;
+  width: calc(var(--width-k) * 1533);
+}
+
+.heading__wrapper {
+  position: relative;
+  display: flex;
+  gap: calc(var(--width-k) * 54);
+  align-items: center;
+  padding: calc(var(--width-k) * 33) calc(var(--width-k) * 74)
+    calc(var(--width-k) * 33) calc(var(--width-k) * 70);
+  box-shadow: calc(var(--width-k) * 12) calc(var(--width-k) * 14)
+    calc(var(--width-k) * 14) 0px rgba(0, 0, 0, 0.15);
+  border: calc(var(--width-k)) solid rgba(0, 0, 0, 0.2);
+  height: calc(var(--width-k) * 142);
+  margin-bottom: calc(var(--width-k) * 70);
+}
+
+.heading__line {
+  background-color: var(--primary);
+  width: 100%;
+  height: calc(var(--width-k) * 1);
+}
+
+.heading {
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 62.63);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary);
+  width: calc(var(--width-k) * 27);
+  height: calc(var(--width-k) * 142);
+}
+
+.rectangle {
+  transform: rotate(90deg);
+  width: calc(var(--width-k) * 141);
+  height: calc(var(--width-k) * 52);
+  position: absolute;
+  top: 0;
+  right: calc(var(--width-k) * -95);
+}
+
+.card__wrapper {
+  display: flex;
+  gap: calc(var(--width-k) * 16);
+  align-items: flex-start;
+}
+
+.card {
+  width: calc(var(--width-k) * 371);
+}
+
+.card__heading__wrapper {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--width-k) * 8);
+  width: 100%;
+  height: calc(var(--width-k) * 52);
+  padding-left: calc(var(--width-k) * 8);
+  background-color: var(--primary);
+  margin-bottom: calc(var(--width-k) * 8);
+  border-radius: calc(var(--width-k) * 2.495);
+  border: calc(var(--width-k) * 0.6) solid rgba(0, 0, 0, 0.1);
+  box-shadow: calc(var(--width-k) * 7) calc(var(--width-k) * 8)
+    calc(var(--width-k) * 8) 0px rgba(0, 0, 0, 0.15);
+}
+
+.card__heading {
+  color: var(--white);
+  font-size: calc(var(--width-k) * 21.2);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.card:last-child .card__heading {
+  font-size: calc(var(--width-k) * 14.2);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-radius: calc(var(--width-k) * 2.495);
+  border: calc(var(--width-k) * 0.6) solid rgba(0, 0, 0, 0.1);
+  box-shadow: calc(var(--width-k) * 7) calc(var(--width-k) * 8)
+    calc(var(--width-k) * 8) 0px rgba(0, 0, 0, 0.15);
+  padding: calc(var(--width-k) * 14) calc(var(--width-k) * 14);
+  height: calc(var(--width-k) * 489);
+}
+
+.list__item {
+  list-style-position: inside;
+  color: var(--txt);
+  font-size: calc(var(--width-k) * 21.2);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: capitalize;
+  line-height: 163.523%;
+}

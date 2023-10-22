@@ -5,6 +5,7 @@ import { Goal } from "@/components/Goal/Goal";
 import { Counterparty } from "@/components/Counterparty/Counterparty";
 import { Contracts } from "@/components/Contracts/Contracts";
 import { Stages } from "@/components/Stages/Stages";
+import { Services } from "@/components/Services/Services";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Counterparty />
       <Contracts />
       <Stages />
+      <Services />
     </main>
   );
 }
