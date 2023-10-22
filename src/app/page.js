@@ -7,6 +7,7 @@ import { Contracts } from "@/components/Contracts/Contracts";
 import { Stages } from "@/components/Stages/Stages";
 import { Services } from "@/components/Services/Services";
 import { Contact } from "@/components/Contact/Contact";
+import { FooterComponent } from "@/components/FooterComponent/FooterComponent";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Stages />
       <Services />
       <Contact />
+      <FooterComponent />
     </main>
   );
 }

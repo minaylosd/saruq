@@ -1,0 +1,68 @@
+.footer {
+  position: relative;
+}
+.background {
+  position: relative;
+  width: 100%;
+  height: calc(var(--width-k) * 461);
+}
+
+.index {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 110;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--width-k) * 34) calc(var(--width-k) * 98)
+    calc(var(--width-k) * 55) calc(var(--width-k) * 135);
+}
+
+.info {
+  align-self: flex-end;
+  margin-right: calc(var(--width-k) * 360);
+}
+
+.card__item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--width-k) * 14);
+  margin-bottom: calc(var(--width-k) * 24);
+}
+
+.icon {
+  width: calc(var(--width-k) * 28);
+  height: calc(var(--width-k) * 28);
+}
+
+.card__text {
+  color: var(--white);
+  font-size: calc(var(--width-k) * 15);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  max-width: calc(var(--width-k) * 363);
+}
+
+.logo {
+  width: calc(var(--width-k) * 202);
+  height: calc(var(--width-k) * 274);
+  margin-right: calc(var(--width-k) * 360);
+}
+
+.navigation {
+  align-self: flex-start;
+  display: flex;
+  gap: calc(var(--width-k) * 36);
+}
+
+.link {
+  color: var(--white);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+}
