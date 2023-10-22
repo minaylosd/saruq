@@ -1,0 +1,115 @@
+.geometry {
+  display: flex;
+  position: relative;
+  align-items: top;
+  gap: calc(var(--width-k) * 16);
+  margin: 0 0 auto auto;
+  padding-top: calc(var(--width-k) * 133);
+  width: calc(var(--width-k) * 1607);
+}
+.rectangle {
+  position: absolute;
+  top: calc(var(--width-k) * 133);
+  left: calc(var(--width-k) * -16);
+  width: calc(var(--width-k) * 141);
+  height: calc(var(--width-k) * 52);
+}
+.line {
+  background-color: var(--primary);
+  width: calc(var(--width-k) * 27);
+  height: calc(var(--width-k) * 142);
+}
+.flex {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--width-k) * 21);
+  width: calc(var(--width-k) * 1562);
+}
+.heading {
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 62.63);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.divider {
+  background-color: var(--primary);
+  width: 100%;
+  height: calc(var(--width-k) * 1);
+}
+.description {
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 34);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  width: calc(var(--width-k) * 681);
+}
+.content {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+  width: calc(var(--width-k) * 1562);
+  margin: 0 0 auto auto;
+}
+
+.form__button {
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(var(--width-k) * 72);
+  padding: calc(var(--width-k) * 14) calc(var(--width-k) * 36);
+  border-radius: calc(var(--width-k) * 4);
+}
+.card {
+  background-color: var(--primary);
+  border-radius: calc(var(--width-k) * 4);
+  width: fit-content;
+  padding: calc(var(--width-k) * 32) 0 calc(var(--width-k) * 59)
+    calc(var(--width-k) * 53);
+  margin-bottom: auto;
+}
+.card__heading__wrapper {
+  display: flex;
+  gap: calc(var(--width-k) * 21);
+}
+
+.card__heading {
+  color: var(--white);
+  font-size: calc(var(--width-k) * 51.35);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.card__rectangle {
+  width: calc(var(--width-k) * 380);
+  height: calc(var(--width-k) * 52);
+}
+.card__item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--width-k) * 22);
+  margin-bottom: calc(var(--width-k) * 40);
+}
+.icon {
+  width: calc(var(--width-k) * 48);
+  height: calc(var(--width-k) * 48);
+}
+.card__text {
+  color: var(--white);
+  font-size: calc(var(--width-k) * 28);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  max-width: calc(var(--width-k) * 459);
+}

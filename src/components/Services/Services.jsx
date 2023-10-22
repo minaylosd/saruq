@@ -77,7 +77,7 @@ export const Services = () => {
           <h1 className={styles.heading}>Our services</h1>
           <div className={styles.line}></div>
           <div className={styles.rectangle}>
-            <Rectangle />
+            <Rectangle turn={true} />
           </div>
         </div>
         <div className={styles.card__wrapper}>

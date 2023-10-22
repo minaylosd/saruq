@@ -44,6 +44,7 @@ button {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  font-family: "Inter", sans-serif;
 }
 
 aside {
@@ -55,4 +56,78 @@ aside {
   height: 100vh;
   background-color: var(--white);
   z-index: 100;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--width-k) * 59);
+  width: calc(var(--width-k) * 652);
+  margin: calc(var(--width-k) * 104) 0 auto 0;
+}
+
+input {
+  border-bottom: var(--width-k) solid rgba(182, 182, 182, 1);
+  width: calc(var(--width-k) * 652);
+  padding: calc(var(--width-k) * 11) calc(var(--width-k) * 26);
+  font-size: calc(var(--width-k) * 34);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-family: "Inter", sans-serif;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: calc(var(--width-k) * 2) solid rgba(0, 0, 0, 1);
+}
+
+input::placeholder {
+  font-family: "Inter", sans-serif;
+  color: rgba(182, 182, 182, 1);
+}
+
+textarea {
+  border-bottom: var(--width-k) solid rgba(182, 182, 182, 1);
+  width: calc(var(--width-k) * 652);
+  padding: calc(var(--width-k) * 11) calc(var(--width-k) * 26);
+  font-size: calc(var(--width-k) * 34);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  height: calc(var(--width-k) * 74);
+  font-family: "Inter", sans-serif;
+}
+
+textarea:focus {
+  outline: none;
+  border-bottom: calc(var(--width-k) * 2) solid rgba(0, 0, 0, 1);
+}
+
+textarea::placeholder {
+  font-family: "Inter", sans-serif;
+  color: rgba(182, 182, 182, 1);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --width-k: calc(100vw / 1024);
+  }
+
+  aside {
+    display: none;
+  }
+
+  form {
+    width: calc(var(--width-k) * 652);
+  }
+
+  input {
+    width: calc(var(--width-k) * 652);
+  }
+
+  textarea {
+    width: calc(var(--width-k) * 652);
+  }
 }

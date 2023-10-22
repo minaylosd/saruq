@@ -6,6 +6,7 @@ import { Counterparty } from "@/components/Counterparty/Counterparty";
 import { Contracts } from "@/components/Contracts/Contracts";
 import { Stages } from "@/components/Stages/Stages";
 import { Services } from "@/components/Services/Services";
+import { Contact } from "@/components/Contact/Contact";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Contracts />
       <Stages />
       <Services />
+      <Contact />
     </main>
   );
 }
