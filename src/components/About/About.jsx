@@ -26,7 +26,7 @@ export const About = () => {
           trigger: ".about",
           start: "top bottom",
           end: "bottom 80%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none none none",
         },
       }
     );
@@ -45,7 +45,7 @@ export const About = () => {
           trigger: ".goal",
           start: "top 50%",
           end: "top 90%",
-          toggleActions: "play none none reverse",
+          toggleActions: "play none reset none",
         },
       }
     );

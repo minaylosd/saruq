@@ -35,7 +35,7 @@ export default function Home() {
           trigger: ".about",
           start: "top bottom",
           end: "top 90%",
-          toggleActions: "play none pause reverse",
+          toggleActions: "play none reset none",
         },
       }
     );
@@ -55,7 +55,7 @@ export default function Home() {
           trigger: ".about",
           start: "top bottom",
           end: "top 90%",
-          toggleActions: "play none pause reverse",
+          toggleActions: "play none reset none",
         },
       }
     );
@@ -70,9 +70,7 @@ export default function Home() {
     let animating = false;
     let currentIndex = 0;
     const touch = {
-      startX: 0,
       startY: 0,
-      dx: 0,
       dy: 0,
     };
 
@@ -119,25 +117,37 @@ export default function Home() {
     function handleTouchStart(e) {
       if (animating) return;
       const t = e.changedTouches[0];
-      touch.startX = t.pageX;
-      touch.startY = t.pageY;
+      touch.startY = t.clientY;
+      console.log("Touch start:", touch.startY);
     }
 
     function handleTouchMove(e) {
       if (animating) return;
-      e.preventDefault();
+      // e.preventDefault();
     }
 
     function handleTouchEnd(e) {
       if (animating) return;
       const t = e.changedTouches[0];
-      touch.dx = t.pageX - touch.startX;
-      touch.dy = t.pageY - touch.startY;
-      if (touch.dy > 10) gotoSection(currentIndex - 1, -1);
-      if (touch.dy < -10) gotoSection(currentIndex + 1, 1);
+      touch.dy = t.clientY - touch.startY;
+      console.log("Touch end:", t.clientX, t.clientY);
+      console.log("Touch movement:", touch.dy);
+      if (
+        (touch.dy > -10 && currentIndex === 0) ||
+        (touch.dy < 10 && currentIndex === panels.length - 1)
+      )
+        return;
+      if (touch.dy > -10) gotoSection(currentIndex - 1, -1);
+      if (touch.dy < 10) gotoSection(currentIndex + 1, 1);
     }
 
     gotoSection(0, 1);
+
+    // ScrollTrigger.create({
+    //   start: 0,
+    //   end: "max",
+    //   snap: 1 / ((panels.length - 1) * 0.5),
+    // });
 
     document.addEventListener("wheel", handleWheel, { passive: false });
     document.addEventListener("touchstart", handleTouchStart, {
