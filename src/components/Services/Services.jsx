@@ -70,7 +70,7 @@ export const Services = () => {
     },
   ];
   return (
-    <section>
+    <section className="section">
       <div className={styles.content}>
         <div className={styles.heading__wrapper}>
           <div className={styles.heading__line}></div>

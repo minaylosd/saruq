@@ -5,7 +5,7 @@ import styles from "./Contracts.module.css";
 
 export const Contracts = () => {
   return (
-    <section>
+    <section className="section">
       <div className={styles.content}>
         <div className={styles.label}>
           <div className={styles.rectangle}>

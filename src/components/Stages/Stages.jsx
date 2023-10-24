@@ -22,7 +22,7 @@ export const Stages = () => {
     },
   ];
   return (
-    <section>
+    <section className="section">
       <div className={styles.content}>
         <div className={styles.image}>
           <Image src={Background} fill={true} alt="City" />

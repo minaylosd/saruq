@@ -21,9 +21,9 @@ export const FooterComponent = () => {
     },
   ];
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} section`}>
       <div className={styles.background}>
-        <Image src={Background} fill={true} />
+        <Image src={Background} fill={true} alt="background image" />
       </div>
       <div className={styles.index}>
         <div className={styles.info}>

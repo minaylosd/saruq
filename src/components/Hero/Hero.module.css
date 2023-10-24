@@ -1,3 +1,7 @@
+.content {
+  position: relative;
+}
+
 .image__wrapper {
   position: relative;
   width: calc(var(--width-k) * 1446);
@@ -10,6 +14,7 @@
   position: absolute;
   top: calc(var(--width-k) * 275);
   left: calc(var(--width-k) * 212);
+  z-index: 110;
 }
 
 .rotated {

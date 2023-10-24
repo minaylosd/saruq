@@ -20,7 +20,7 @@ export const Contact = () => {
     },
   ];
   return (
-    <section>
+    <section className="section">
       <div className={styles.geometry}>
         <div className={styles.rectangle}>
           <Rectangle turn={false} left={true} />

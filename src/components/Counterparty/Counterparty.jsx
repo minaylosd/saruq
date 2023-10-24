@@ -5,7 +5,7 @@ import styles from "./Counterparty.module.css";
 
 export const Counterparty = () => {
   return (
-    <section>
+    <section className="section">
       <div className={styles.content}>
         <div className={styles.image}>
           <Image src={Photo} fill={true} alt="Counterparty" />

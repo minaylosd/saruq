@@ -1,6 +1,7 @@
 .content {
   margin: 0 calc(var(--width-k) * 125) auto auto;
   width: calc(var(--width-k) * 1533);
+  padding-top: calc(var(--width-k) * 126);
 }
 
 .heading__wrapper {
