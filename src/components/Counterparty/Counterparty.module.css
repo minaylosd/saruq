@@ -83,3 +83,27 @@
   line-height: normal;
   letter-spacing: calc(var(--width-k) * 1.1);
 }
+
+@media (max-width: 1024px) {
+  @media (max-width: 1024px) {
+    .heading__wrapper {
+      padding: calc(var(--width-k) * 206) 0 0 calc(var(--width-k) * 40);
+    }
+    .content {
+      flex-direction: column;
+      width: 100%;
+      gap: calc(var(--width-k) * 150);
+    }
+    .image {
+      order: 2;
+    }
+    .card {
+      right: calc(var(--width-k) * 150);
+      order: 2;
+    }
+    .label {
+      align-self: flex-start;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 .heading__wrapper {
   margin: 0 0 calc(var(--width-k) * 117) auto;
-  padding-top: calc(var(--width-k) * 133);
+  padding: calc(var(--width-k) * 133) 0 0 0;
   display: flex;
   align-items: center;
   gap: calc(var(--width-k) * 32);
@@ -123,4 +123,25 @@
   font-weight: 300;
   line-height: normal;
   letter-spacing: calc(var(--width-k) * 1.1);
+}
+
+@media (max-width: 1024px) {
+  .heading__wrapper {
+    padding: calc(var(--width-k) * 206) 0 0 calc(var(--width-k) * 40);
+  }
+  .content {
+    flex-direction: column;
+    width: 100%;
+    gap: calc(var(--width-k) * 150);
+  }
+  .label {
+    order: 2;
+  }
+  .card {
+    right: calc(var(--width-k) * 150);
+  }
+  .label {
+    align-self: flex-start;
+    margin: 0 0 0 calc(var(--width-k) * 40);
+  }
 }

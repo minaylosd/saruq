@@ -1,11 +1,11 @@
 import Logo from "../Logo/Logo.jsx";
 import Burger from "../Burger/Burger.jsx";
-import Arrow from "./Arrow.jsx";
-import styles from "./Sidebar.module.css";
+import Arrow from "../Sidebar/Arrow.jsx";
+import styles from "./HeaderComponent.module.css";
 
-export const Sidebar = () => {
+export const HeaderComponent = () => {
   return (
-    <aside>
+    <header>
       <div className={styles.logo}>
         <Logo color="#4A1A61" />
       </div>
@@ -30,6 +30,6 @@ export const Sidebar = () => {
           </a>
         </nav>
       </div> */}
-    </aside>
+    </header>
   );
 };

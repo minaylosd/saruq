@@ -1,18 +1,11 @@
 .logo {
   width: calc(var(--width-k) * 72);
   height: calc(var(--width-k) * 98);
-  margin-top: calc(var(--width-k) * 23);
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .burger {
   width: calc(var(--width-k) * 21);
   height: calc(var(--width-k) * 31);
-  margin-top: calc(var(--width-k) * 379);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: auto;
 }
 
 .arrow {
@@ -47,5 +40,9 @@
   text-decoration: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 767px) {
+  .logo {
+    width: calc(var(--width-k) * 39);
+    height: calc(var(--width-k) * 52);
+  }
 }

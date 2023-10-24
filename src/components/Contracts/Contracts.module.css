@@ -58,9 +58,7 @@
   background-color: var(--white);
   width: calc(var(--width-k) * 1030);
   height: calc(var(--width-k) * 260);
-  padding-top: calc(var(--width-k) * 35);
-  padding-left: calc(var(--width-k) * 35);
-  padding-right: calc(var(--width-k) * 35);
+  padding: calc(var(--width-k) * 30);
   box-shadow: calc(var(--width-k) * 12) calc(var(--width-k) * 14)
     calc(var(--width-k) * 14) 0px rgba(0, 0, 0, 0.15);
 }
@@ -82,4 +80,30 @@
   font-weight: 300;
   line-height: normal;
   letter-spacing: calc(var(--width-k) * 1.1);
+}
+
+@media (max-width: 1024px) {
+  @media (max-width: 1024px) {
+    .heading__wrapper {
+      padding: calc(var(--width-k) * 206) 0 0 calc(var(--width-k) * 40);
+    }
+    .content {
+      flex-direction: column;
+      width: 100%;
+      gap: calc(var(--width-k) * 150);
+    }
+    .image {
+      order: 2;
+    }
+    .card {
+      left: calc(var(--width-k) * 200);
+      width: calc(var(--width-k) * 865);
+      height: fit-content;
+      padding: calc(var(--width-k) * 30);
+    }
+    .label {
+      align-self: flex-start;
+      margin: 0 auto;
+    }
+  }
 }

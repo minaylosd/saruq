@@ -58,7 +58,7 @@
 .card__wrapper {
   display: flex;
   gap: calc(var(--width-k) * 52);
-  margin-left: calc(var(--width-k) * 181);
+  margin: 0 0 0 calc(var(--width-k) * 181);
 }
 
 .card {
@@ -112,4 +112,31 @@
   font-weight: 300;
   line-height: normal;
   white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .heading__wrapper {
+    width: 100%;
+  }
+  .heading__line {
+    width: calc(var(--width-k) * 100);
+  }
+  .heading__line:last-child {
+    width: 100%;
+  }
+  .description {
+    font-size: calc(var(--width-k) * 24);
+    margin-left: calc(var(--width-k) * 90);
+    margin-bottom: calc(var(--width-k) * 100);
+  }
+  .card__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(var(--width-k) * 52);
+    margin: 0 auto;
+  }
+  .image {
+    width: 100vw;
+  }
 }

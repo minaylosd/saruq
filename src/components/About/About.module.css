@@ -1,6 +1,7 @@
 .spacing {
   padding-top: calc(var(--width-k) * 71);
 }
+
 .characteristics {
   display: flex;
   gap: calc(var(--width-k) * 57);
@@ -171,4 +172,115 @@
   font-weight: 300;
   line-height: normal;
   width: calc(var(--width-k) * 806);
+}
+
+@media (max-width: 1024px) {
+  .spacing {
+    padding: calc(var(--width-k) * 120) 0 0 calc(var(--width-k) * 40);
+  }
+  .characteristics {
+    width: 100%;
+  }
+  .divider {
+    width: 100%;
+  }
+  .characteristics__item {
+    font-size: calc(var(--width-k) * 24);
+    text-align: center;
+    gap: 0;
+    justify-items: space-around;
+  }
+  .rotated {
+    display: none;
+  }
+  .image__wrapper {
+    display: none;
+  }
+  .txt__section {
+    margin-top: calc(var(--width-k) * 150);
+  }
+}
+
+@media (max-width: 767px) {
+  .spacing {
+    padding: calc(var(--width-k) * 85) 0 0 calc(var(--width-k) * 14);
+  }
+  .characteristics {
+    width: 100%;
+    height: calc(var(--width-k) * 48);
+    gap: 0;
+    justify-items: space-around;
+  }
+  .divider {
+    width: 100%;
+  }
+  .characteristics__item {
+    font-size: calc(var(--width-k) * 14);
+    width: fit-content;
+    text-align: center;
+  }
+  .characteristics__divider {
+    width: 1px;
+  }
+  .rotated {
+    display: none;
+  }
+  .image__wrapper {
+    display: none;
+  }
+  .txt__section {
+    margin-top: calc(var(--width-k) * 0);
+    width: fit-content;
+    max-width: calc(var(--width-k) * 400);
+  }
+  .heading__wrapper {
+    gap: calc(var(--width-k) * 14);
+  }
+  .heading {
+    font-size: calc(var(--width-k) * 32);
+  }
+  .description {
+    font-size: calc(var(--width-k) * 14);
+    width: calc(var(--width-k) * 343);
+  }
+  .geometry {
+    margin-top: calc(var(--width-k) * 12.5);
+  }
+
+  .geometry__line {
+    margin-bottom: calc(var(--width-k) * 112);
+  }
+
+  .geometry__line:first-child {
+    width: calc(var(--width-k) * 53);
+    margin-bottom: calc(var(--width-k) * 48);
+  }
+
+  .geometry__line:last-child {
+    margin-bottom: 0;
+  }
+
+  .rectangle__wrapper {
+    margin-bottom: calc(var(--width-k) * 25);
+  }
+
+  .rectangle {
+    width: calc(var(--width-k) * 257);
+    height: calc(var(--width-k) * 25);
+    margin-right: calc(var(--width-k) * 16);
+  }
+
+  .square {
+    width: calc(var(--width-k) * 25);
+    height: calc(var(--width-k) * 25);
+  }
+
+  .list {
+    gap: calc(var(--width-k) * 32);
+  }
+
+  .list__item {
+    font-size: calc(var(--width-k) * 14);
+    width: calc(var(--width-k) * 306);
+  }
 }

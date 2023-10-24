@@ -74,6 +74,19 @@ aside {
   z-index: 100;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: calc(var(--width-k) * 7) calc(var(--width-k) * 7);
+  background-color: var(--white);
+  z-index: 120;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -126,7 +139,7 @@ textarea::placeholder {
   color: rgba(182, 182, 182, 1);
 }
 
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
   :root {
     --width-k: calc(100vw / 1024);
   }
@@ -135,7 +148,20 @@ textarea::placeholder {
     display: none;
   }
 
-  form {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: calc(var(--width-k) * 22) calc(var(--width-k) * 40);
+    background-color: var(--white);
+    z-index: 120;
+  }
+
+  /* form {
     width: calc(var(--width-k) * 652);
   }
 
@@ -145,5 +171,34 @@ textarea::placeholder {
 
   textarea {
     width: calc(var(--width-k) * 652);
+  } */
+}
+
+@media (max-width: 767px) {
+  :root {
+    --width-k: calc(100vw / 390);
   }
-} */
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--white);
+    z-index: 120;
+    padding: calc(var(--width-k) * 7) calc(var(--width-k) * 14);
+    height: fit-content;
+  }
+
+  aside {
+    display: none;
+  }
+
+  button {
+    font-size: calc(var(--width-k) * 12);
+    padding: calc(var(--width-k) * 7) calc(var(--width-k) * 17);
+  }
+}
