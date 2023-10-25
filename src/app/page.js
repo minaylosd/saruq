@@ -105,7 +105,7 @@ export default function Home() {
         debounce(() => {
           // Considered trackpad
           console.log("it is trackpad");
-        }, 100);
+        }, 500);
       } else {
         // wheel
         console.log("Wheel");
