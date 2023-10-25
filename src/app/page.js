@@ -77,7 +77,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // if (isTablet) {
+    // if (isDesktop) {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     const panels = gsap.utils.toArray(".section");
@@ -206,18 +206,18 @@ export default function Home() {
       console.log("Touch end:", t.clientX, t.clientY);
       console.log("Touch movement:", touch.dy);
       if (
-        (touch.dy > -20 && currentIndex === 0) ||
-        (touch.dy < 20 && currentIndex === panels.length - 1)
+        (touch.dy > -50 && currentIndex === 0) ||
+        (touch.dy < 50 && currentIndex === panels.length - 1)
       )
         return;
-      if (touch.dy > -20) gotoSection(currentIndex - 1, -1);
-      if (touch.dy < 20) gotoSection(currentIndex + 1, 1);
+      if (touch.dy > -50) gotoSection(currentIndex - 1, -1);
+      if (touch.dy < 50) gotoSection(currentIndex + 1, 1);
     }
 
     gotoSection(0, 1);
 
     document.querySelector(".up__btn").addEventListener("click", handleUpBtn);
-    if (isTablet) {
+    if (isDesktop) {
       document.addEventListener("wheel", handleWheel, { passive: false });
       document.addEventListener("touchstart", handleTouchStart, {
         passive: true,
