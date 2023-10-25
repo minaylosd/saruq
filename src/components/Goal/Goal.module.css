@@ -145,3 +145,54 @@
     margin: 0 0 0 calc(var(--width-k) * 40);
   }
 }
+
+@media (max-width: 767px) {
+  .heading__wrapper {
+    padding: calc(var(--width-k) * 84) 0 0 calc(var(--width-k) * 40);
+    margin-bottom: calc(var(--width-k) * 24);
+  }
+  .heading {
+    font-size: calc(var(--width-k) * 32);
+  }
+  .heading__line {
+    display: none;
+  }
+  .content {
+    flex-direction: column;
+    width: 100%;
+    gap: calc(var(--width-k) * 150);
+  }
+  .label {
+    order: 2;
+  }
+  .card {
+    right: calc(var(--width-k) * 500);
+    width: calc(var(--width-k) * 380);
+    height: fit-content;
+    padding-top: calc(var(--width-k) * 24);
+    padding-left: calc(var(--width-k) * 22);
+    padding-right: calc(var(--width-k) * 22);
+    padding-bottom: calc(var(--width-k) * 17);
+  }
+  .subHeading {
+    font-size: calc(var(--width-k) * 24);
+  }
+  .description {
+    font-size: calc(var(--width-k) * 14);
+  }
+  .label {
+    align-self: flex-start;
+    margin: 0 0 0 calc(var(--width-k) * 40);
+    width: calc(var(--width-k) * 120);
+    height: calc(var(--width-k) * 73);
+    padding: calc(var(--width-k) * 12);
+    display: none;
+  }
+  .label__txt {
+    font-size: calc(var(--width-k) * 24);
+  }
+  .square {
+    width: calc(var(--width-k) * 25);
+    height: calc(var(--width-k) * 25);
+  }
+}

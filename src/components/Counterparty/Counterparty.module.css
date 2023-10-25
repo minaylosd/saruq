@@ -85,25 +85,72 @@
 }
 
 @media (max-width: 1024px) {
-  @media (max-width: 1024px) {
-    .heading__wrapper {
-      padding: calc(var(--width-k) * 206) 0 0 calc(var(--width-k) * 40);
-    }
-    .content {
-      flex-direction: column;
-      width: 100%;
-      gap: calc(var(--width-k) * 150);
-    }
-    .image {
-      order: 2;
-    }
-    .card {
-      right: calc(var(--width-k) * 150);
-      order: 2;
-    }
-    .label {
-      align-self: flex-start;
-      margin: 0 auto;
-    }
+  .heading__wrapper {
+    padding: calc(var(--width-k) * 206) 0 0 calc(var(--width-k) * 40);
+  }
+  .content {
+    flex-direction: column;
+    width: 100%;
+    gap: calc(var(--width-k) * 150);
+  }
+  .image {
+    order: 2;
+  }
+  .card {
+    right: calc(var(--width-k) * 150);
+    order: 2;
+  }
+  .label {
+    align-self: flex-start;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .heading__wrapper {
+    padding: calc(var(--width-k) * 206) 0 0 calc(var(--width-k) * 40);
+  }
+  .content {
+    flex-direction: column;
+    width: 100%;
+    gap: calc(var(--width-k) * 28);
+  }
+  .image {
+    order: 2;
+  }
+  .card {
+    width: calc(var(--width-k) * 380);
+    height: calc(var(--width-k) * 290);
+    left: calc(var(--width-k) * 400);
+    order: 2;
+    padding-top: calc(var(--width-k) * 24);
+    padding-left: calc(var(--width-k) * 22);
+    padding-right: calc(var(--width-k) * 22);
+    padding-bottom: calc(var(--width-k) * 17);
+  }
+  .label {
+    width: calc(var(--width-k) * 321);
+    height: fit-content;
+    align-self: flex-start;
+    margin: 0 auto;
+  }
+  .rectangle {
+    position: absolute;
+    top: calc(var(--width-k) * -26);
+    right: calc(var(--width-k) * 39);
+    width: calc(var(--width-k) * 80);
+    height: calc(var(--width-k) * 26);
+  }
+  .label__txt {
+    font-size: calc(var(--width-k) * 32);
+    text-align: left;
+  }
+  .subHeading {
+    font-size: calc(var(--width-k) * 24);
+    margin-bottom: calc(var(--width-k) * 17);
+  }
+
+  .description {
+    font-size: calc(var(--width-k) * 14);
   }
 }

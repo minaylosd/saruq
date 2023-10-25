@@ -10,11 +10,13 @@ import { Services } from "@/components/Services/Services";
 import { Contact } from "@/components/Contact/Contact";
 import { HeaderComponent } from "@/components/HeaderComponent/HeaderComponent";
 import { FooterComponent } from "@/components/FooterComponent/FooterComponent";
+import { UpBtn } from "@/components/UpBtn/UpBtn";
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { Lethargy } from "lethargy-ts";
+import { useMediaQuery } from "react-responsive";
 
 const lethargy = new Lethargy({
   sensitivity: 100,
@@ -23,6 +25,12 @@ const lethargy = new Lethargy({
 });
 
 export default function Home() {
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1025px)",
+  });
+  const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -69,6 +77,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    // if (isTablet) {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     const panels = gsap.utils.toArray(".section");
@@ -80,6 +89,11 @@ export default function Home() {
       startY: 0,
       dy: 0,
     };
+
+    const navLinks = document.querySelectorAll(".scroll__nav");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleNav);
+    });
 
     function gotoSection(index, direction) {
       if (animating) return;
@@ -112,23 +126,23 @@ export default function Home() {
     //   }
     // };
 
-    function handleScroll(e) {
-      e.preventDefault();
-      const normalized = normalizeWheel(e);
-      const isTrackpad = Math.abs(normalized.pixelY) < 10;
-      if (isTrackpad) {
-        // trackpad
-        console.log("Trackpad");
-        debounce(() => {
-          // Considered trackpad
-          console.log("it is trackpad");
-        }, 500);
-      } else {
-        // wheel
-        console.log("Wheel");
-        handleWheel(e);
-      }
-    }
+    // function handleScroll(e) {
+    //   e.preventDefault();
+    //   const normalized = normalizeWheel(e);
+    //   const isTrackpad = Math.abs(normalized.pixelY) < 10;
+    //   if (isTrackpad) {
+    //     // trackpad
+    //     console.log("Trackpad");
+    //     debounce(() => {
+    //       // Considered trackpad
+    //       console.log("it is trackpad");
+    //     }, 500);
+    //   } else {
+    //     // wheel
+    //     console.log("Wheel");
+    //     handleWheel(e);
+    //   }
+    // }
 
     function handleWheel(e) {
       if (animating) return;
@@ -149,6 +163,31 @@ export default function Home() {
       e.wheelDeltaY < 0;
     }
 
+    function handleUpBtn(e) {
+      e.preventDefault();
+      if (animating) return;
+      gotoSection(0, 1);
+    }
+
+    function handleNav(e) {
+      e.preventDefault();
+      // check if animating
+      if (animating) return;
+      // check text content of link
+      const link = e.target.textContent.toLowerCase();
+      // case for link === "services"
+      if (link === "services") {
+        // scroll to services section
+        gotoSection(6, 1);
+      } else if (link === "tasks") {
+        // scroll to tasks section
+        gotoSection(5, 1);
+      } else if (link === "about us") {
+        // scroll to about section
+        gotoSection(1, 1);
+      }
+    }
+
     function handleTouchStart(e) {
       if (animating) return;
       const t = e.changedTouches[0];
@@ -167,29 +206,34 @@ export default function Home() {
       console.log("Touch end:", t.clientX, t.clientY);
       console.log("Touch movement:", touch.dy);
       if (
-        (touch.dy > -10 && currentIndex === 0) ||
-        (touch.dy < 10 && currentIndex === panels.length - 1)
+        (touch.dy > -20 && currentIndex === 0) ||
+        (touch.dy < 20 && currentIndex === panels.length - 1)
       )
         return;
-      if (touch.dy > -10) gotoSection(currentIndex - 1, -1);
-      if (touch.dy < 10) gotoSection(currentIndex + 1, 1);
+      if (touch.dy > -20) gotoSection(currentIndex - 1, -1);
+      if (touch.dy < 20) gotoSection(currentIndex + 1, 1);
     }
 
     gotoSection(0, 1);
 
-    document.addEventListener("wheel", handleScroll, { passive: false });
-    document.addEventListener("touchstart", handleTouchStart, {
-      passive: true,
-    });
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
-    document.addEventListener("touchend", handleTouchEnd, { passive: true });
+    document.querySelector(".up__btn").addEventListener("click", handleUpBtn);
+    if (isTablet) {
+      document.addEventListener("wheel", handleWheel, { passive: false });
+      document.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+      });
+      document.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      });
+      document.addEventListener("touchend", handleTouchEnd, { passive: true });
 
-    return () => {
-      document.removeEventListener("wheel", handleScroll);
-      document.removeEventListener("touchstart", handleTouchStart);
-      document.removeEventListener("touchmove", handleTouchMove);
-      document.removeEventListener("touchend", handleTouchEnd);
-    };
+      return () => {
+        document.removeEventListener("wheel", handleWheel);
+        document.removeEventListener("touchstart", handleTouchStart);
+        document.removeEventListener("touchmove", handleTouchMove);
+        document.removeEventListener("touchend", handleTouchEnd);
+      };
+    }
   }, []);
 
   const divStyle = {
@@ -202,30 +246,31 @@ export default function Home() {
     <main>
       <Sidebar />
       <HeaderComponent />
-      <div style={divStyle}>
-        <Hero />
-      </div>
-      <div style={divStyle}>
-        <About />
-      </div>
-      <div style={divStyle}>
-        <Goal />
-      </div>
-      <div style={divStyle}>
-        <Counterparty />
-      </div>
-      <div style={divStyle}>
-        <Contracts />
-      </div>
-      <div style={divStyle}>
-        <Stages />
-      </div>
-      <div style={divStyle}>
-        <Services />
-      </div>
-      <div style={divStyle}>
-        <Contact />
-      </div>
+      <UpBtn />
+      {/* <div style={divStyle}> */}
+      <Hero />
+      {/* </div> */}
+      {/* <div style={divStyle}> */}
+      <About />
+      {/* </div> */}
+      {/* <div style={divStyle}> */}
+      <Goal />
+      {/* </div> */}
+      {/* <div style={divStyle}> */}
+      <Counterparty />
+      {/* </div> */}
+      {/* <div style={divStyle}> */}
+      <Contracts />
+      {/* </div> */}
+      {/* <div style={divStyle}> */}
+      <Stages />
+      {/* </div> */}
+      {/* <div style={divStyle}> */}
+      <Services />
+      {/* </div> */}
+      {/* <div style={divStyle}> */}
+      <Contact />
+      {/* </div> */}
       <FooterComponent />
     </main>
   );

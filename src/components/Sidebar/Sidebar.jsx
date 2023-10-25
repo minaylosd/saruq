@@ -16,19 +16,11 @@ export const Sidebar = () => {
         <div className={styles.arrow}>
           <Arrow></Arrow>
         </div>
-        <nav className={styles.nav}>
-          <a href="#" className={styles.link}>
-            Services
-          </a>
-
-          <a href="#" className={styles.link}>
-            Tasks
-          </a>
-
-          <a href="#" className={styles.link}>
-            About Us
-          </a>
-        </nav>
+        <nav className={styles.navigation}>
+            <div className={`${styles.link} scroll__nav`}>Services</div>
+            <div className={`${styles.link} scroll__nav`}>Tasks</div>
+            <div className={`${styles.link} scroll__nav`}>About Us</div>
+          </nav>
       </div> */}
     </aside>
   );

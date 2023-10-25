@@ -1,0 +1,47 @@
+.button {
+  background-color: var(--white);
+  box-shadow: calc(var(--width-k) * 6) calc(var(--width-k) * 7)
+    calc(var(--width-k) * 14) 0px rgba(0, 0, 0, 0.23);
+  border-radius: calc(var(--width-k) * 10);
+  position: fixed;
+  top: calc(var(--width-k) * 822);
+  left: calc(var(--width-k) * 1807);
+  z-index: 130;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.triangle {
+  width: 14px;
+  height: 8px;
+  margin: 0 auto 8px auto;
+}
+
+.text {
+  color: var(--primary);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  margin: 0 auto 6px auto;
+}
+
+@media (max-width: 1024px) {
+  .button {
+    top: calc(var(--width-k) * 1240);
+    left: calc(var(--width-k) * 919);
+    /* display: none; */
+  }
+}
+
+@media (max-width: 767px) {
+  .button {
+    top: calc(var(--width-k) * 757);
+    left: calc(var(--width-k) * 313);
+    display: none;
+  }
+}

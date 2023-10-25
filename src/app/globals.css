@@ -24,25 +24,20 @@ body {
   background-color: var(--white);
 }
 
+a {
+  text-decoration: none;
+}
+
 img {
   z-index: 10;
 }
 
 main {
-  /* height: 100vh; */
-  /* scroll-snap-type: y mandatory; */
-  /* overflow-y: auto; */
-  /* scroll-behavior: smooth; */
   overflow: hidden;
 }
 
 section {
-  /* display: flex; */
-  /* position: relative; */
-  /* scroll-snap-align: start; */
-  /* margin-bottom: 20px; */
   height: 100vh;
-  /* width: 100%; */
 }
 
 h1 {
@@ -75,14 +70,13 @@ aside {
 }
 
 header {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: calc(var(--width-k) * 7) calc(var(--width-k) * 7);
   background-color: var(--white);
   z-index: 120;
 }
@@ -148,30 +142,14 @@ textarea::placeholder {
     display: none;
   }
 
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
+  header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
     padding: calc(var(--width-k) * 22) calc(var(--width-k) * 40);
-    background-color: var(--white);
-    z-index: 120;
   }
 
-  /* form {
-    width: calc(var(--width-k) * 652);
+  form {
+    margin-left: calc(var(--width-k) * 40);
   }
-
-  input {
-    width: calc(var(--width-k) * 652);
-  }
-
-  textarea {
-    width: calc(var(--width-k) * 652);
-  } */
 }
 
 @media (max-width: 767px) {
@@ -179,18 +157,9 @@ textarea::placeholder {
     --width-k: calc(100vw / 390);
   }
 
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
+  header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: var(--white);
-    z-index: 120;
     padding: calc(var(--width-k) * 7) calc(var(--width-k) * 14);
-    height: fit-content;
   }
 
   aside {
@@ -200,5 +169,27 @@ textarea::placeholder {
   button {
     font-size: calc(var(--width-k) * 12);
     padding: calc(var(--width-k) * 7) calc(var(--width-k) * 17);
+  }
+
+  section {
+    height: fit-content;
+  }
+
+  input {
+    width: calc(var(--width-k) * 340);
+    padding: calc(var(--width-k) * 8) calc(var(--width-k) * 14);
+    font-size: calc(var(--width-k) * 24);
+  }
+
+  textarea {
+    width: calc(var(--width-k) * 340);
+    padding: calc(var(--width-k) * 8) calc(var(--width-k) * 14);
+    font-size: calc(var(--width-k) * 24);
+    height: calc(var(--width-k) * 45);
+  }
+  form {
+    gap: calc(var(--width-k) * 32);
+    width: calc(var(--width-k) * 340);
+    margin: calc(var(--width-k) * 104) auto auto auto;
   }
 }

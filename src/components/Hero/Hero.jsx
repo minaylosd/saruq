@@ -13,6 +13,11 @@ export const Hero = () => {
           <Image src={Photo} fill={true} alt="Hero image" />
         </div>
         <div className={`${styles.card__wrapper} hero__card`}>
+          <nav className={styles.navigation}>
+            <div className={`${styles.link} scroll__nav`}>Services</div>
+            <div className={`${styles.link} scroll__nav`}>Tasks</div>
+            <div className={`${styles.link} scroll__nav`}>About Us</div>
+          </nav>
           <div className={styles.rotated}>Emirates</div>
           <div className={styles.rectangle}></div>
           <div className={styles.card}>

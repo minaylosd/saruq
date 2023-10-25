@@ -24,7 +24,7 @@
   margin-right: calc(var(--width-k) * 24);
 }
 
-.nav {
+.navigation {
   display: flex;
   flex-direction: column;
   gap: calc(var(--width-k) * 23);

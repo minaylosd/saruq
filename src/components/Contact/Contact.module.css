@@ -81,6 +81,7 @@
 .card__heading__wrapper {
   display: flex;
   gap: calc(var(--width-k) * 21);
+  margin-bottom: calc(var(--width-k) * 32);
 }
 
 .card__heading {
@@ -112,4 +113,82 @@
   font-weight: 300;
   line-height: normal;
   max-width: calc(var(--width-k) * 459);
+}
+
+@media (max-width: 1024px) {
+  .geometry {
+    width: 100%;
+    margin: 0 0 auto calc(var(--width-k) * 108);
+    padding-top: calc(var(--width-k) * 170);
+  }
+  .rectangle {
+    top: calc(var(--width-k) * 170);
+  }
+  .divider {
+    width: calc(var(--width-k) * 424);
+  }
+  .content {
+    width: 100%;
+    flex-direction: column;
+    gap: calc(var(--width-k) * 80);
+  }
+  .card {
+    align-self: flex-end;
+  }
+}
+@media (max-width: 767px) {
+  .geometry {
+    margin: 0 auto auto calc(var(--width-k) * 55);
+    width: calc(var(--width-k) * 1607);
+  }
+  .heading {
+    font-size: calc(var(--width-k) * 32);
+  }
+  .description {
+    font-size: calc(var(--width-k) * 14);
+    width: calc(var(--width-k) * 265);
+  }
+  .rectangle {
+    width: calc(var(--width-k) * 66);
+  }
+  .divider {
+    display: none;
+  }
+  .line {
+    display: none;
+  }
+  .form__button {
+    font-size: calc(var(--width-k) * 24);
+    height: calc(var(--width-k) * 45);
+    padding: calc(var(--width-k) * 14) calc(var(--width-k) * 36);
+    border-radius: calc(var(--width-k) * 4);
+  }
+  .card {
+    width: 100%;
+    padding: calc(var(--width-k) * 32) 0 calc(var(--width-k) * 59)
+      calc(var(--width-k) * 14);
+    border-radius: 0;
+  }
+  .card__heading {
+    font-size: calc(var(--width-k) * 32);
+    order: 2;
+    white-space: nowrap;
+  }
+  .card__heading__wrapper {
+    width: 150%;
+    transform: translateX(calc(var(--width-k) * -215));
+  }
+  .icon {
+    width: calc(var(--width-k) * 36);
+    height: calc(var(--width-k) * 36);
+  }
+  .card__rectangle {
+    order: 1;
+    width: calc(var(--width-k) * 248);
+  }
+  .card__text {
+    color: var(--white);
+    font-size: calc(var(--width-k) * 20);
+    max-width: calc(var(--width-k) * 300);
+  }
 }

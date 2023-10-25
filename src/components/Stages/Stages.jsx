@@ -24,29 +24,32 @@ export const Stages = () => {
   return (
     <section className="section">
       <div className={styles.content}>
-        <div className={styles.image}>
-          <Image src={Background} fill={true} alt="City" />
-          <div className={styles.index}>
-            <div className={styles.heading__wrapper}>
-              <div className={styles.heading__line}></div>
-              <h1 className={styles.heading}>Shall we begin?</h1>
-              <div className={styles.heading__line}></div>
-            </div>
-            <p className={styles.description}>
-              We are ready to start working with you at any stage of the
-              transaction
-            </p>
-            <div className={styles.card__wrapper}>
-              {cardItems.map((item) => (
-                <div className={styles.card} key={item.id}>
-                  <div className={styles.card__number}>{item.id}</div>
-                  <div className={styles.card__txt}>{item.txt}</div>
-                  <div className={styles.card__bottom}>
-                    Fill in an inquiry form
-                  </div>
+        <div className={styles.position}>
+          <div className={styles.image}>
+            <Image src={Background} fill={true} alt="City" />
+          </div>
+        </div>
+
+        <div className={styles.index}>
+          <div className={styles.heading__wrapper}>
+            <div className={styles.heading__line}></div>
+            <h1 className={styles.heading}>Shall we begin?</h1>
+            <div className={styles.heading__line}></div>
+          </div>
+          <p className={styles.description}>
+            We are ready to start working with you at any stage of the
+            transaction
+          </p>
+          <div className={styles.card__wrapper}>
+            {cardItems.map((item) => (
+              <div className={styles.card} key={item.id}>
+                <div className={styles.card__number}>{item.id}</div>
+                <div className={styles.card__txt}>{item.txt}</div>
+                <div className={styles.card__bottom}>
+                  Fill in an inquiry form
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

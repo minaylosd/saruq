@@ -32,7 +32,9 @@ export const FooterComponent = () => {
               <div className={styles.icon}>
                 <InfoIcons type={item.type} />
               </div>
-              <p className={styles.card__text}>{item.value}</p>
+              <div className={styles.flex}>
+                <p className={styles.card__text}>{item.value}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -40,15 +42,9 @@ export const FooterComponent = () => {
           <Logo color="#fff" />
         </div>
         <nav className={styles.navigation}>
-          <a href="#" className={styles.link}>
-            Services
-          </a>
-          <a href="#" className={styles.link}>
-            Tasks
-          </a>
-          <a href="#" className={styles.link}>
-            About Us
-          </a>
+          <div className={`${styles.link} scroll__nav`}>Services</div>
+          <div className={`${styles.link} scroll__nav`}>Tasks</div>
+          <div className={`${styles.link} scroll__nav`}>About Us</div>
         </nav>
       </div>
     </footer>
