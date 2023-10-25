@@ -86,7 +86,7 @@ export default function Home() {
           observer.enable();
         },
         duration: 0.2,
-        delay: 0.1,
+        // delay: 0.1,
         onComplete: () => {
           animating = false;
           scrollTween = null;
@@ -123,8 +123,64 @@ export default function Home() {
 
     function handleTouchMove(e) {
       if (animating) return;
-      // e.preventDefault();
     }
+
+    var scrolling = false;
+    var oldTime = 0;
+    var newTime = 0;
+    var isTouchPad;
+    var eventCount = 0;
+    var eventCountStart;
+
+    var handleScroll = function (evt) {
+      if (animating) return;
+      e.preventDefault();
+      e.stopPropagation();
+      var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
+      console.log(isTouchPadDefined);
+      if (!isTouchPadDefined) {
+        if (eventCount === 0) {
+          eventCountStart = new Date().getTime();
+        }
+
+        eventCount++;
+
+        if (new Date().getTime() - eventCountStart > 100) {
+          if (eventCount > 10) {
+            isTouchPad = true;
+          } else {
+            isTouchPad = false;
+          }
+          isTouchPadDefined = true;
+        }
+      }
+
+      if (isTouchPadDefined) {
+        if (!evt) evt = event;
+        var direction = evt.detail < 0 || evt.wheelDelta > 0 ? 1 : -1;
+
+        if (isTouchPad) {
+          newTime = new Date().getTime();
+
+          if (!scrolling && newTime - oldTime > 550) {
+            scrolling = true;
+            if (direction < 0) {
+              // swipe down
+              console.log("trackpad moves down");
+            } else {
+              // swipe up
+              console.log("trackpad moves up");
+            }
+            setTimeout(function () {
+              oldTime = new Date().getTime();
+              scrolling = false;
+            }, 500);
+          }
+        } else {
+          handleWheel(evt);
+        }
+      }
+    };
 
     function handleTouchEnd(e) {
       if (animating) return;
@@ -149,7 +205,7 @@ export default function Home() {
     //   snap: 1 / ((panels.length - 1) * 0.5),
     // });
 
-    document.addEventListener("wheel", handleWheel, { passive: false });
+    document.addEventListener("wheel", handleScroll, { passive: false });
     document.addEventListener("touchstart", handleTouchStart, {
       passive: true,
     });
@@ -157,7 +213,7 @@ export default function Home() {
     document.addEventListener("touchend", handleTouchEnd, { passive: true });
 
     return () => {
-      document.removeEventListener("wheel", handleWheel);
+      document.removeEventListener("wheel", handleScroll);
       document.removeEventListener("touchstart", handleTouchStart);
       document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleTouchEnd);
