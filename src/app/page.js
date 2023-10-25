@@ -14,7 +14,13 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
-import normalizeWheel from "normalize-wheel";
+import { Lethargy } from "lethargy-ts";
+
+const lethargy = new Lethargy({
+  sensitivity: 100,
+  delay: 500,
+  inertiaDecay: 10,
+});
 
 export default function Home() {
   useEffect(() => {
@@ -96,6 +102,16 @@ export default function Home() {
       });
     }
 
+    // const checkWheelEvent = () => {
+    //   e.preventDefault();
+    //   const isIntentional = lethargy.check(e);
+
+    //   if (isIntentional) {
+    //     // Do something with the scroll event
+    //     handleWheel(e);
+    //   }
+    // };
+
     function handleScroll(e) {
       e.preventDefault();
       const normalized = normalizeWheel(e);
@@ -112,18 +128,6 @@ export default function Home() {
         console.log("Wheel");
         handleWheel(e);
       }
-    }
-
-    function debounce(func, wait) {
-      let timeout;
-      return function () {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          func.apply(context, args);
-        }, wait);
-      };
     }
 
     function handleWheel(e) {
@@ -172,12 +176,6 @@ export default function Home() {
     }
 
     gotoSection(0, 1);
-
-    // ScrollTrigger.create({
-    //   start: 0,
-    //   end: "max",
-    //   snap: 1 / ((panels.length - 1) * 0.5),
-    // });
 
     document.addEventListener("wheel", handleScroll, { passive: false });
     document.addEventListener("touchstart", handleTouchStart, {
