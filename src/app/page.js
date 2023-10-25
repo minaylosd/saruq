@@ -97,6 +97,7 @@ export default function Home() {
     }
 
     function handleScroll(e) {
+      e.preventDefault();
       const normalized = normalizeWheel(e);
       const isTrackpad = Math.abs(normalized.pixelY) < 10;
       if (isTrackpad) {
