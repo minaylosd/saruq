@@ -102,11 +102,27 @@ export default function Home() {
       if (isTrackpad) {
         // trackpad
         console.log("Trackpad");
+        debounce(() => {
+          // Considered trackpad
+          console.log("it is trackpad");
+        }, 100);
       } else {
         // wheel
         console.log("Wheel");
         handleWheel(e);
       }
+    }
+
+    function debounce(func, wait) {
+      let timeout;
+      return function () {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          func.apply(context, args);
+        }, wait);
+      };
     }
 
     function handleWheel(e) {
