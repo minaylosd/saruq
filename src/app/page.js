@@ -245,7 +245,11 @@ export default function Home() {
   return (
     <main>
       <Sidebar />
-      <HeaderComponent />
+      <HeaderComponent
+        isMobile={isMobile}
+        isTablet={isTablet}
+        isDesktop={isDesktop}
+      />
       <UpBtn />
       {/* <div style={divStyle}> */}
       <Hero />

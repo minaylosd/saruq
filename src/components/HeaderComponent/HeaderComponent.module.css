@@ -11,33 +11,42 @@
 .arrow {
   width: calc(var(--width-k) * 24);
   height: calc(var(--width-k) * 24);
-  padding: calc(var(--width-k) * 6) calc(var(--width-k) * 5);
   margin-top: calc(var(--width-k) * 23);
   margin-left: auto;
   margin-right: 0;
   margin-bottom: calc(var(--width-k) * 11);
+  transform: rotate(180deg);
+  cursor: pointer;
 }
 
 .menu {
-  margin-top: calc(var(--width-k) * 293.86);
-  margin-left: calc(var(--width-k) * 24);
-  margin-right: calc(var(--width-k) * 24);
+  position: absolute;
+  top: calc(var(--width-k) * 120);
+  right: 0;
+  width: calc(var(--width-k) * 250);
+  background-color: var(--white);
+  padding-right: calc(var(--width-k) * 40);
+  /* margin-top: calc(var(--width-k) * 293.86); */
+  /* margin-left: calc(var(--width-k) * 24); */
+  /* margin-right: calc(var(--width-k) * 24); */
 }
 
 .navigation {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: calc(var(--width-k) * 23);
   text-align: right;
+  /* margin-right: calc(var(--width-k) * 24); */
 }
 
 .link {
   color: var(--primary);
-  font-size: calc(var(--width-k) * 24);
+  font-size: calc(var(--width-k) * 32);
   font-style: normal;
   font-weight: 300;
   line-height: normal;
   text-decoration: none;
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {

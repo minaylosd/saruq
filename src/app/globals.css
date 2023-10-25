@@ -67,6 +67,7 @@ aside {
   height: 100vh;
   background-color: var(--white);
   z-index: 100;
+  overflow: hidden;
 }
 
 header {
