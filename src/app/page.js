@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import normalizeWheel from "normalize-wheel";
 
 export default function Home() {
   useEffect(() => {
@@ -95,6 +96,19 @@ export default function Home() {
       });
     }
 
+    function handleScroll(e) {
+      const normalized = normalizeWheel(e);
+      const isTrackpad = Math.abs(normalized.pixelY) < 10;
+      if (isTrackpad) {
+        // trackpad
+        console.log("Trackpad");
+      } else {
+        // wheel
+        console.log("Wheel");
+        handleWheel(e);
+      }
+    }
+
     function handleWheel(e) {
       if (animating) return;
       e.preventDefault();
@@ -124,63 +138,6 @@ export default function Home() {
     function handleTouchMove(e) {
       if (animating) return;
     }
-
-    var scrolling = false;
-    var oldTime = 0;
-    var newTime = 0;
-    var isTouchPad;
-    var eventCount = 0;
-    var eventCountStart;
-
-    var handleScroll = function (evt) {
-      if (animating) return;
-      e.preventDefault();
-      e.stopPropagation();
-      var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
-      console.log(isTouchPadDefined);
-      if (!isTouchPadDefined) {
-        if (eventCount === 0) {
-          eventCountStart = new Date().getTime();
-        }
-
-        eventCount++;
-
-        if (new Date().getTime() - eventCountStart > 100) {
-          if (eventCount > 10) {
-            isTouchPad = true;
-          } else {
-            isTouchPad = false;
-          }
-          isTouchPadDefined = true;
-        }
-      }
-
-      if (isTouchPadDefined) {
-        if (!evt) evt = event;
-        var direction = evt.detail < 0 || evt.wheelDelta > 0 ? 1 : -1;
-
-        if (isTouchPad) {
-          newTime = new Date().getTime();
-
-          if (!scrolling && newTime - oldTime > 550) {
-            scrolling = true;
-            if (direction < 0) {
-              // swipe down
-              console.log("trackpad moves down");
-            } else {
-              // swipe up
-              console.log("trackpad moves up");
-            }
-            setTimeout(function () {
-              oldTime = new Date().getTime();
-              scrolling = false;
-            }, 500);
-          }
-        } else {
-          handleWheel(evt);
-        }
-      }
-    };
 
     function handleTouchEnd(e) {
       if (animating) return;
