@@ -11,20 +11,28 @@ import { Contact } from "@/components/Contact/Contact";
 import { HeaderComponent } from "@/components/HeaderComponent/HeaderComponent";
 import { FooterComponent } from "@/components/FooterComponent/FooterComponent";
 import { UpBtn } from "@/components/UpBtn/UpBtn";
-import { useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { Lethargy } from "lethargy-ts";
 import { useMediaQuery } from "react-responsive";
 
-const lethargy = new Lethargy({
-  sensitivity: 100,
-  delay: 500,
-  inertiaDecay: 10,
-});
+const lethargy = new Lethargy();
 
 export default function Home() {
+  const [events, setEvents] = useState([
+    {
+      deltaX: 0,
+      deltaY: 0,
+      deltaZ: 0,
+      timeStamp: 0,
+      isIntentional: false,
+    },
+  ]);
+
+  const prevTimeStampRef = useRef(0);
+
   const isDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
@@ -32,53 +40,157 @@ export default function Home() {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.fromTo(
-      ".hero__image",
-      {
-        autoAlpha: 1,
-        y: 0,
-        scale: 1,
-      },
-      {
-        autoAlpha: 0,
-        y: -500,
-        scale: 0.7,
-        duration: 0.2,
-        scrollTrigger: {
-          trigger: ".about",
-          start: "top bottom",
-          end: "top 90%",
-          toggleActions: "play none reset none",
-        },
-      }
-    );
-    gsap.fromTo(
-      ".hero__card",
-      {
-        autoAlpha: 1,
-        x: 0,
-        scale: 1,
-      },
-      {
-        autoAlpha: 0,
-        x: -500,
-        scale: 0.7,
-        duration: 0.2,
-        scrollTrigger: {
-          trigger: ".about",
-          start: "top bottom",
-          end: "top 90%",
-          toggleActions: "play none reset none",
-        },
-      }
-    );
-  }, []);
-
-  useEffect(() => {
     // if (isDesktop) {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+    function fadeOut(currentIndex, index, direction) {
+      console.log("Current index:", currentIndex);
+      console.log("Index:", index);
+      console.log("Direction:", direction);
+      if (currentIndex === 0) {
+        gsap.fromTo(
+          ".hero__image",
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+          },
+          {
+            autoAlpha: 0,
+            y: -500,
+            scale: 0.44,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+        gsap.fromTo(
+          ".hero__card",
+          {
+            autoAlpha: 1,
+            x: 0,
+            scale: 1,
+          },
+          {
+            autoAlpha: 0,
+            x: -1000,
+            scale: 0.44,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+      }
+      if (currentIndex === 1) {
+        gsap.fromTo(
+          ".about",
+          {
+            autoAlpha: 1,
+            x: 0,
+            scale: 1,
+          },
+          {
+            autoAlpha: 0,
+            x: 800,
+            scale: 0.19,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+      }
+      gotoSection(index, direction);
+    }
+
+    function fadeIn(index, direction) {
+      if (index === 0) {
+        gsap.fromTo(
+          ".hero__image",
+          {
+            autoAlpha: 0,
+            y: -500,
+            scale: 0.44,
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+        gsap.fromTo(
+          ".hero__card",
+          {
+            autoAlpha: 0,
+            x: -1000,
+            scale: 0.44,
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+      }
+      if (index === 1) {
+        gsap.fromTo(
+          ".about",
+          {
+            autoAlpha: 0,
+            x: 0,
+            y: 500,
+            scale: 0.44,
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+      }
+      if (index === 2) {
+        gsap.fromTo(
+          "[data-animation='goal-heading']",
+          {
+            autoAlpha: 0,
+          },
+          {
+            autoAlpha: 1,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+        gsap.fromTo(
+          "[data-animation='goal__label']",
+          {
+            autoAlpha: 0,
+            x: -1000,
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+        gsap.fromTo(
+          "[data-animation='goal__image']",
+          {
+            autoAlpha: 0,
+            x: 1000,
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            duration: 0.3,
+            ease: "power2.inOut",
+          }
+        );
+      }
+    }
 
     const panels = gsap.utils.toArray(".section");
     const observer = ScrollTrigger.normalizeScroll(true);
@@ -89,11 +201,6 @@ export default function Home() {
       startY: 0,
       dy: 0,
     };
-
-    const navLinks = document.querySelectorAll(".scroll__nav");
-    navLinks.forEach((link) => {
-      link.addEventListener("click", handleNav);
-    });
 
     function gotoSection(index, direction) {
       if (animating) return;
@@ -106,48 +213,49 @@ export default function Home() {
           observer.disable();
           observer.enable();
         },
-        duration: 0.2,
-        // delay: 0.1,
+        duration: 0.1,
+        delay: 0.3,
         onComplete: () => {
           animating = false;
           scrollTween = null;
         },
         overwrite: true,
       });
+      fadeIn(index, direction);
     }
 
-    // const checkWheelEvent = () => {
-    //   e.preventDefault();
-    //   const isIntentional = lethargy.check(e);
+    const checkWheelEvent = (e) => {
+      e.preventDefault();
+      console.log("Wheel event");
+      const isIntentional = lethargy.check(e);
 
-    //   if (isIntentional) {
-    //     // Do something with the scroll event
-    //     handleWheel(e);
-    //   }
-    // };
+      if (e.ctrlKey || e.altKey) return;
 
-    // function handleScroll(e) {
-    //   e.preventDefault();
-    //   const normalized = normalizeWheel(e);
-    //   const isTrackpad = Math.abs(normalized.pixelY) < 10;
-    //   if (isTrackpad) {
-    //     // trackpad
-    //     console.log("Trackpad");
-    //     debounce(() => {
-    //       // Considered trackpad
-    //       console.log("it is trackpad");
-    //     }, 500);
-    //   } else {
-    //     // wheel
-    //     console.log("Wheel");
-    //     handleWheel(e);
-    //   }
-    // }
+      if (isIntentional) {
+        console.log("Intentional");
+        const currentTimeStamp = e.timeStamp;
+        if (currentTimeStamp - prevTimeStampRef.current > 500) {
+          console.log(e.deltaY);
+          setEvents((prev) => [
+            {
+              deltaX: e.deltaX,
+              deltaY: e.deltaY,
+              deltaZ: e.deltaZ,
+              timeStamp: currentTimeStamp,
+              isIntentional,
+            },
+          ]);
+          prevTimeStampRef.current = currentTimeStamp;
+          handleWheel(e);
+        }
+      }
+    };
 
     function handleWheel(e) {
-      if (animating) return;
       e.preventDefault();
       e.stopPropagation();
+      if (animating) return;
+
       if (e.wheelDeltaY === 0) {
         return;
       } else if (
@@ -157,34 +265,28 @@ export default function Home() {
         return;
       } else {
         e.wheelDeltaY < 0
-          ? gotoSection(currentIndex + 1, 1)
-          : gotoSection(currentIndex - 1, -1);
+          ? fadeOut(currentIndex, currentIndex + 1, 1)
+          : fadeOut(currentIndex, currentIndex - 1, -1);
       }
       e.wheelDeltaY < 0;
     }
 
     function handleUpBtn(e) {
       e.preventDefault();
-      if (animating) return;
-      gotoSection(0, 1);
+      if (animating || currentIndex === 0) return;
+      fadeOut(0, -1);
     }
 
     function handleNav(e) {
       e.preventDefault();
-      // check if animating
       if (animating) return;
-      // check text content of link
       const link = e.target.textContent.toLowerCase();
-      // case for link === "services"
       if (link === "services") {
-        // scroll to services section
-        gotoSection(6, 1);
+        fadeOut(currentIndex, 6, 1);
       } else if (link === "tasks") {
-        // scroll to tasks section
-        gotoSection(5, 1);
+        fadeOut(currentIndex, 5, 1);
       } else if (link === "about us") {
-        // scroll to about section
-        gotoSection(1, 1);
+        fadeOut(currentIndex, 1, 1);
       }
     }
 
@@ -216,9 +318,14 @@ export default function Home() {
 
     gotoSection(0, 1);
 
+    const navLinks = document.querySelectorAll(".scroll__nav");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", handleNav);
+    });
+
     document.querySelector(".up__btn").addEventListener("click", handleUpBtn);
     if (isDesktop) {
-      document.addEventListener("wheel", handleWheel, { passive: false });
+      document.addEventListener("wheel", checkWheelEvent, { passive: false });
       document.addEventListener("touchstart", handleTouchStart, {
         passive: true,
       });
@@ -228,7 +335,7 @@ export default function Home() {
       document.addEventListener("touchend", handleTouchEnd, { passive: true });
 
       return () => {
-        document.removeEventListener("wheel", handleWheel);
+        document.removeEventListener("wheel", checkWheelEvent);
         document.removeEventListener("touchstart", handleTouchStart);
         document.removeEventListener("touchmove", handleTouchMove);
         document.removeEventListener("touchend", handleTouchEnd);
@@ -245,37 +352,39 @@ export default function Home() {
   return (
     <main>
       <Sidebar />
-      <HeaderComponent
+      {/* <HeaderComponent
         isMobile={isMobile}
         isTablet={isTablet}
         isDesktop={isDesktop}
-      />
+      /> */}
       <UpBtn />
-      {/* <div style={divStyle}> */}
-      <Hero />
-      {/* </div> */}
-      {/* <div style={divStyle}> */}
-      <About />
-      {/* </div> */}
-      {/* <div style={divStyle}> */}
-      <Goal />
-      {/* </div> */}
-      {/* <div style={divStyle}> */}
-      <Counterparty />
-      {/* </div> */}
-      {/* <div style={divStyle}> */}
-      <Contracts />
-      {/* </div> */}
-      {/* <div style={divStyle}> */}
-      <Stages />
-      {/* </div> */}
-      {/* <div style={divStyle}> */}
-      <Services />
-      {/* </div> */}
-      {/* <div style={divStyle}> */}
-      <Contact />
-      {/* </div> */}
-      <FooterComponent />
+      <div className="container">
+        {/* <div className="slide" style={divStyle}> */}
+        <Hero />
+        {/* </div> */}
+        {/* <div className="slide" style={divStyle}> */}
+        <About />
+        {/* </div> */}
+        {/* <div className="slide" style={divStyle}> */}
+        <Goal />
+        {/* </div> */}
+        {/* <div className="slide" style={divStyle}> */}
+        <Counterparty />
+        {/* </div> */}
+        {/* <div className="slide" style={divStyle}> */}
+        <Contracts />
+        {/* </div> */}
+        {/* <div className="slide" style={divStyle}> */}
+        <Stages />
+        {/* </div> */}
+        {/* <div className="slide" style={divStyle}> */}
+        <Services />
+        {/* </div> */}
+        {/* <div className="slide" style={divStyle}> */}
+        <Contact />
+        {/* </div> */}
+        <FooterComponent />
+      </div>
     </main>
   );
 }

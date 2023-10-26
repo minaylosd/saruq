@@ -2,54 +2,8 @@ import Photo from "./aboutImg.jpg";
 import Image from "next/image";
 import Square from "../Square/Square";
 import styles from "./About.module.css";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect } from "react";
 
 export const About = () => {
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.fromTo(
-      ".about",
-      {
-        autoAlpha: 0,
-        y: 500,
-        scale: 0.7,
-      },
-      {
-        autoAlpha: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.3,
-        scrollTrigger: {
-          trigger: ".about",
-          start: "top bottom",
-          end: "bottom 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      ".about",
-      {
-        autoAlpha: 1,
-        x: 0,
-      },
-      {
-        autoAlpha: 0,
-        x: 500,
-        duration: 0.3,
-        scrollTrigger: {
-          trigger: ".goal",
-          start: "top 50%",
-          end: "top 90%",
-          toggleActions: "play none reset none",
-        },
-      }
-    );
-  }, []);
   return (
     <section className="section about">
       <div className={styles.spacing}>

@@ -6,12 +6,15 @@ import styles from "./Goal.module.css";
 export const Goal = () => {
   return (
     <section className="section goal">
-      <div className={`${styles.heading__wrapper} goal__heading`}>
+      <div
+        data-animation="goal__heading"
+        className={`${styles.heading__wrapper}`}
+      >
         <h1 className={styles.heading}>Specify your goal</h1>
         <div className={styles.heading__line}></div>
       </div>
       <div className={styles.content}>
-        <div className={`${styles.label} goal__label`}>
+        <div data-animation="goal__label" className={styles.label}>
           <div className={styles.flex}>
             <div className={styles.square}>
               <Square />
@@ -20,7 +23,7 @@ export const Goal = () => {
           </div>
           <div className={styles.label__txt}>client</div>
         </div>
-        <div className={`${styles.image} goal__image`}>
+        <div data-animation="goal__image" className={styles.image}>
           <Image src={Photo} fill={true} alt="Goal" />
           <div className={styles.card}>
             <p className={styles.subHeading}>Orders below 10 000$</p>

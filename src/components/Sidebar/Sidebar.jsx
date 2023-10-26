@@ -76,25 +76,25 @@ function closeMenuTween({ onComplete }) {
   );
 }
 
-export const Menu = ({ closeMenuTween }) => {
+export const Menu = ({ toggleMenu }) => {
   return (
     <nav className={styles.navigation}>
       <div
-        onClick={closeMenuTween}
+        onClick={toggleMenu}
         data-animation="menu-link"
         className={`${styles.link} scroll__nav`}
       >
         Services
       </div>
       <div
-        onClick={closeMenuTween}
+        onClick={toggleMenu}
         data-animation="menu-link"
         className={`${styles.link} scroll__nav`}
       >
         Tasks
       </div>
       <div
-        onClick={closeMenuTween}
+        onClick={toggleMenu}
         data-animation="menu-link"
         className={`${styles.link} scroll__nav`}
       >
@@ -116,25 +116,27 @@ export const Sidebar = () => {
         });
   }
   return (
-    <aside data-animation="menu-wrapper">
-      <div data-animation="menu-logo" className={styles.logo}>
-        <Logo color="#4A1A61" />
-      </div>
-      <div onClick={toggleMenu} className={styles.burger}>
-        <div data-animation="menu-burger">
-          <Burger />
+    <>
+      <aside data-animation="menu-wrapper">
+        <div data-animation="menu-logo" className={styles.logo}>
+          <Logo color="#4A1A61" />
         </div>
-      </div>
-      <div className={styles.menu}>
-        <div
-          onClick={toggleMenu}
-          data-animation="menu-link"
-          className={styles.arrow}
-        >
-          <Arrow />
+        <div onClick={toggleMenu} className={styles.burger}>
+          <div data-animation="menu-burger">
+            <Burger />
+          </div>
         </div>
-        <Menu closeMenuTween={closeMenuTween} />
-      </div>
-    </aside>
+        <div className={styles.menu}>
+          <div
+            onClick={toggleMenu}
+            data-animation="menu-link"
+            className={styles.arrow}
+          >
+            <Arrow />
+          </div>
+          <Menu toggleMenu={toggleMenu} />
+        </div>
+      </aside>
+    </>
   );
 };
