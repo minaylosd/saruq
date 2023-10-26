@@ -34,6 +34,7 @@ img {
 
 main {
   overflow: hidden;
+  height: 100vh;
 }
 
 section {
@@ -41,7 +42,7 @@ section {
 }
 
 .container {
-  /* overflow: hidden; */
+  overflow: hidden;
   /* height: 100vh; */
 }
 
