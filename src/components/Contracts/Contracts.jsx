@@ -7,15 +7,15 @@ export const Contracts = () => {
   return (
     <section className="section">
       <div className={styles.content}>
-        <div className={styles.label}>
+        <div data-animation="contracts__label" className={styles.label}>
           <div className={styles.rectangle}>
             <Rectangle />
           </div>
           <h1 className={styles.label__txt}>Medium to high-value contracts</h1>
         </div>
-        <div className={styles.image}>
+        <div data-animation="contracts__image" className={styles.image}>
           <Image src={Photo} fill={true} alt="City" />
-          <div className={styles.card}>
+          <div data-animation="contracts__card" className={styles.card}>
             <p className={styles.subHeading}>Deals from 50 000$</p>
             <p className={styles.description}>
               As a prominent player in the market, your business model may still

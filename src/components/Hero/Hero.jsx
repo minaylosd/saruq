@@ -7,12 +7,12 @@ import { useEffect } from "react";
 
 export const Hero = () => {
   return (
-    <section className="section hero">
+    <section className="section">
       <div className={styles.content}>
-        <div className={`${styles.image__wrapper} hero__image`}>
+        <div data-animation="hero__image" className={styles.image__wrapper}>
           <Image src={Photo} fill={true} alt="Hero image" />
         </div>
-        <div className={`${styles.card__wrapper} hero__card`}>
+        <div data-animation="hero__card" className={styles.card__wrapper}>
           <nav className={styles.navigation}>
             <div className={`${styles.link} scroll__nav`}>Services</div>
             <div className={`${styles.link} scroll__nav`}>Tasks</div>

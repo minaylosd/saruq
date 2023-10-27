@@ -10,20 +10,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: calc(var(--width-k) * 48);
+  height: calc(var(--width-k) * 48);
   cursor: pointer;
 }
 
 .triangle {
-  width: 14px;
-  height: 8px;
-  margin: 0 auto 8px auto;
+  width: calc(var(--width-k) * 14);
+  height: calc(var(--width-k) * 14);
+  margin: 0 auto;
 }
 
 .text {
   color: var(--primary);
-  font-size: 24px;
+  font-size: calc(var(--width-k) * 24);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -35,7 +35,6 @@
   .button {
     top: calc(var(--width-k) * 1240);
     left: calc(var(--width-k) * 919);
-    /* display: none; */
   }
 }
 

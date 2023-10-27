@@ -5,7 +5,7 @@
   align-items: center;
   width: calc(var(--width-k) * 1820);
   margin: 0 0 auto auto;
-  padding-top: calc(var(--width-k) * 188);
+  padding-top: calc(var(--width-k) * 78);
 }
 
 .position {
@@ -18,7 +18,7 @@
   z-index: 10;
   width: calc(var(--width-k) * 1820);
   height: calc(var(--width-k) * 492);
-  margin-top: calc(var(--width-k) * 188);
+  margin-top: calc(var(--width-k) * 78);
 }
 
 .index {

@@ -14,7 +14,6 @@ import { UpBtn } from "@/components/UpBtn/UpBtn";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { Lethargy } from "lethargy-ts";
 import { useMediaQuery } from "react-responsive";
 
@@ -40,16 +39,13 @@ export default function Home() {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   useEffect(() => {
-    if (isDesktop) {
-      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    if (isTablet) {
+      gsap.registerPlugin(ScrollTrigger);
 
       function fadeOut(currentIndex, index, direction) {
-        console.log("Current index:", currentIndex);
-        console.log("Index:", index);
-        console.log("Direction:", direction);
         if (currentIndex === 0) {
           gsap.fromTo(
-            ".hero__image",
+            "[data-animation='hero__image']",
             {
               autoAlpha: 1,
               y: 0,
@@ -59,12 +55,12 @@ export default function Home() {
               autoAlpha: 0,
               y: -500,
               scale: 0.44,
-              duration: 0.3,
-              ease: "power2.inOut",
+              duration: 0.5,
+              ease: "power2.in",
             }
           );
           gsap.fromTo(
-            ".hero__card",
+            "[data-animation='hero__card']",
             {
               autoAlpha: 1,
               x: 0,
@@ -74,14 +70,14 @@ export default function Home() {
               autoAlpha: 0,
               x: -1000,
               scale: 0.44,
-              duration: 0.3,
-              ease: "power2.inOut",
+              duration: 0.5,
+              ease: "power2.in",
             }
           );
         }
         if (currentIndex === 1) {
           gsap.fromTo(
-            ".about",
+            "[data-animation='about']",
             {
               autoAlpha: 1,
               x: 0,
@@ -89,10 +85,208 @@ export default function Home() {
             },
             {
               autoAlpha: 0,
-              x: 800,
+              x: 1500,
               scale: 0.19,
-              duration: 0.3,
-              ease: "power2.inOut",
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+        }
+        if (currentIndex === 2) {
+          gsap.fromTo(
+            "[data-animation='goal__heading']",
+            {
+              autoAlpha: 1,
+              y: 0,
+            },
+            {
+              autoAlpha: 0,
+              y: -500,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='goal__label']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 300,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='goal__image']",
+            {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+        }
+        if (currentIndex === 3) {
+          gsap.fromTo(
+            "[data-animation='counterparty__label']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: -500,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='counterparty__image']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+        }
+        if (currentIndex === 4) {
+          gsap.fromTo(
+            "[data-animation='contracts__card']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='contracts__label']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='contracts__image']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: -500,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              ease: "power2.in",
+            }
+          );
+        }
+        if (currentIndex === 5) {
+          console.log("index 5");
+
+          gsap.fromTo(
+            "[data-animation='stages__image']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.in",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='stages__heading']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.in",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='stages__card']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              // scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              // scale: 0.44,
+              duration: 0.5,
+              delay: 0.03,
+              // stagger: {
+              //   each: 0.025,
+              //   from: "end",
+              // },
+              ease: "power2.in",
             }
           );
         }
@@ -100,9 +294,10 @@ export default function Home() {
       }
 
       function fadeIn(index, direction) {
+        console.log(direction);
         if (index === 0) {
           gsap.fromTo(
-            ".hero__image",
+            "[data-animation='hero__image']",
             {
               autoAlpha: 0,
               y: -500,
@@ -112,12 +307,13 @@ export default function Home() {
               autoAlpha: 1,
               y: 0,
               scale: 1,
-              duration: 0.3,
-              ease: "power2.inOut",
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
             }
           );
           gsap.fromTo(
-            ".hero__card",
+            "[data-animation='hero__card']",
             {
               autoAlpha: 0,
               x: -1000,
@@ -127,14 +323,15 @@ export default function Home() {
               autoAlpha: 1,
               x: 0,
               scale: 1,
-              duration: 0.3,
-              ease: "power2.inOut",
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
             }
           );
         }
         if (index === 1) {
           gsap.fromTo(
-            ".about",
+            "[data-animation='about']",
             {
               autoAlpha: 0,
               x: 0,
@@ -146,21 +343,27 @@ export default function Home() {
               x: 0,
               y: 0,
               scale: 1,
-              duration: 0.3,
-              ease: "power2.inOut",
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
             }
           );
         }
         if (index === 2) {
           gsap.fromTo(
-            "[data-animation='goal-heading']",
+            "[data-animation='goal__heading']",
             {
               autoAlpha: 0,
+              x: 0,
+              y: 0,
             },
             {
               autoAlpha: 1,
-              duration: 0.3,
-              ease: "power2.inOut",
+              x: 0,
+              y: 0,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
             }
           );
           gsap.fromTo(
@@ -168,12 +371,17 @@ export default function Home() {
             {
               autoAlpha: 0,
               x: -1000,
+              y: 0,
+              scale: 1,
             },
             {
               autoAlpha: 1,
               x: 0,
-              duration: 0.3,
-              ease: "power2.inOut",
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
             }
           );
           gsap.fromTo(
@@ -181,12 +389,171 @@ export default function Home() {
             {
               autoAlpha: 0,
               x: 1000,
+              y: 0,
+              scale: 1,
             },
             {
               autoAlpha: 1,
               x: 0,
-              duration: 0.3,
-              ease: "power2.inOut",
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+        }
+        if (index === 3) {
+          gsap.fromTo(
+            "[data-animation='counterparty__label']",
+            {
+              autoAlpha: 0,
+              x: 1000,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='counterparty__image']",
+            {
+              autoAlpha: 0,
+              x: -1000,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+        }
+        if (index === 4) {
+          gsap.fromTo(
+            "[data-animation='contracts__label']",
+            {
+              autoAlpha: 0,
+              x: -1000,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='contracts__image']",
+            {
+              autoAlpha: 0,
+              x: 1000,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='contracts__card']",
+            {
+              autoAlpha: 0,
+              x: 1000,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+        }
+        if (index === 5) {
+          gsap.fromTo(
+            "[data-animation='stages__card']",
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: 1000,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              // duration: 0.5,
+              delay: 0.03,
+              // stagger: {
+              //   each: 0.025,
+              //   from: "end",
+              // },
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='stages__image']",
+            {
+              autoAlpha: 0,
+              x: 1000,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='stages__heading']",
+            {
+              autoAlpha: 0,
+              x: 1000,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
             }
           );
         }
@@ -215,7 +582,7 @@ export default function Home() {
               observer.enable();
             },
             duration: 0.1,
-            delay: 0.3,
+            delay: 0.5,
             onComplete: () => {
               animating = false;
               scrollTween = null;
@@ -230,7 +597,7 @@ export default function Home() {
               observer.enable();
             },
             duration: 0.1,
-            delay: 0.3,
+            delay: 0.5,
             onComplete: () => {
               animating = false;
               scrollTween = null;
@@ -238,7 +605,6 @@ export default function Home() {
             overwrite: true,
           });
         }
-
         fadeIn(index, direction);
       }
 
@@ -289,8 +655,7 @@ export default function Home() {
         e.wheelDeltaY < 0;
       }
 
-      function handleUpBtn(e) {
-        e.preventDefault();
+      function handleUpBtn() {
         if (animating || currentIndex === 0) return;
         fadeOut(currentIndex, 0, -1);
       }
@@ -312,7 +677,6 @@ export default function Home() {
         if (animating) return;
         const t = e.changedTouches[0];
         touch.startY = t.clientY;
-        console.log("Touch start:", touch.startY);
       }
 
       function handleTouchMove(e) {
@@ -323,18 +687,22 @@ export default function Home() {
         if (animating) return;
         const t = e.changedTouches[0];
         touch.dy = t.clientY - touch.startY;
-        console.log("Touch end:", t.clientX, t.clientY);
-        console.log("Touch movement:", touch.dy);
+        if (touch.dy === 0) return;
         if (
-          (touch.dy > -50 && currentIndex === 0) ||
+          touch.dy === 0 ||
+          (touch.dy > 50 && currentIndex === 0) ||
           (touch.dy < 50 && currentIndex === panels.length - 1)
         )
           return;
-        if (touch.dy > -50) fadeOut(currentIndex, currentIndex - 1, -1);
-        if (touch.dy < 50) fadeOut(currentIndex, currentIndex + 1, 1);
+        if (touch.dy > 50) {
+          fadeOut(currentIndex, currentIndex - 1, -1);
+        }
+        if (touch.dy < -50) {
+          fadeOut(currentIndex, currentIndex + 1, 1);
+        }
       }
 
-      gotoSection(0, 1);
+      // gotoSection(0, 1);
 
       const navLinks = document.querySelectorAll(".scroll__nav");
       navLinks.forEach((link) => {

@@ -7,7 +7,7 @@ export const Counterparty = () => {
   return (
     <section className="section">
       <div className={styles.content}>
-        <div className={styles.image}>
+        <div data-animation="counterparty__image" className={styles.image}>
           <Image src={Photo} fill={true} alt="Counterparty" />
           <div className={styles.card}>
             <p className={styles.subHeading}>Deals from 20 000$</p>
@@ -22,7 +22,7 @@ export const Counterparty = () => {
             </p>
           </div>
         </div>
-        <div className={styles.label}>
+        <div data-animation="counterparty__label" className={styles.label}>
           <div className={styles.rectangle}>
             <Rectangle />
           </div>

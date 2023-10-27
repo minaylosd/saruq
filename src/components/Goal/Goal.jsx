@@ -5,7 +5,7 @@ import styles from "./Goal.module.css";
 
 export const Goal = () => {
   return (
-    <section className="section goal">
+    <section className="section">
       <div
         data-animation="goal__heading"
         className={`${styles.heading__wrapper}`}

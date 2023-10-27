@@ -32,6 +32,7 @@
 }
 
 .label {
+  position: relative;
   width: calc(var(--width-k) * 312);
   height: calc(var(--width-k) * 209);
   padding: calc(var(--width-k) * 46);
@@ -80,9 +81,12 @@
 }
 
 .square {
+  /* position: absolute; */
+  transform-origin: center;
   width: calc(var(--width-k) * 52);
   height: calc(var(--width-k) * 52);
   transform: rotate(180deg);
+  z-index: 150;
 }
 
 .image {
