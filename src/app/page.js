@@ -30,6 +30,8 @@ export default function Home() {
     },
   ]);
 
+  const [resizedWidth, setResizedWidth] = useState(0);
+
   const prevTimeStampRef = useRef(0);
 
   const isDesktop = useMediaQuery({
@@ -43,7 +45,7 @@ export default function Home() {
       gsap.registerPlugin(ScrollTrigger);
 
       function fadeOut(currentIndex, index, direction) {
-        if (currentIndex === 0) {
+        if (currentIndex === 0 && direction === 1) {
           gsap.fromTo(
             "[data-animation='hero__image']",
             {
@@ -75,7 +77,7 @@ export default function Home() {
             }
           );
         }
-        if (currentIndex === 1) {
+        if (currentIndex === 1 && direction === 1) {
           gsap.fromTo(
             "[data-animation='about']",
             {
@@ -92,7 +94,7 @@ export default function Home() {
             }
           );
         }
-        if (currentIndex === 2) {
+        if (currentIndex === 2 && direction === 1) {
           gsap.fromTo(
             "[data-animation='goal__heading']",
             {
@@ -139,7 +141,7 @@ export default function Home() {
             }
           );
         }
-        if (currentIndex === 3) {
+        if (currentIndex === 3 && direction === 1) {
           gsap.fromTo(
             "[data-animation='counterparty__label']",
             {
@@ -175,7 +177,7 @@ export default function Home() {
             }
           );
         }
-        if (currentIndex === 4) {
+        if (currentIndex === 4 && direction === 1) {
           gsap.fromTo(
             "[data-animation='contracts__card']",
             {
@@ -228,9 +230,7 @@ export default function Home() {
             }
           );
         }
-        if (currentIndex === 5) {
-          console.log("index 5");
-
+        if (currentIndex === 5 && direction === 1) {
           gsap.fromTo(
             "[data-animation='stages__image']",
             {
@@ -273,20 +273,61 @@ export default function Home() {
               autoAlpha: 1,
               x: 0,
               y: 0,
-              // scale: 1,
+              scale: 1,
             },
             {
               autoAlpha: 0,
               x: 0,
               y: -1000,
-              // scale: 0.44,
+              scale: 0.44,
               duration: 0.5,
               delay: 0.03,
-              // stagger: {
-              //   each: 0.025,
-              //   from: "end",
-              // },
+              stagger: {
+                each: 0.025,
+                from: "end",
+              },
               ease: "power2.in",
+            }
+          );
+        }
+        if (currentIndex === 6 && direction === 1) {
+          gsap.fromTo(
+            "[data-animation='services__card']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              delay: 0.4,
+              stagger: {
+                each: 0.03,
+              },
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='services__heading']",
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+            },
+            {
+              autoAlpha: 0,
+              x: 0,
+              y: -1000,
+              scale: 0.44,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
             }
           );
         }
@@ -294,14 +335,217 @@ export default function Home() {
       }
 
       function fadeIn(index, direction) {
-        console.log(direction);
+        const animations =
+          direction === 1
+            ? {
+                hero__image: {
+                  autoAlpha: 0,
+                  y: -500,
+                  scale: 0.44,
+                },
+                hero__card: {
+                  autoAlpha: 0,
+                  x: -1000,
+                  scale: 0.44,
+                },
+                about: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: 500,
+                  scale: 0.44,
+                },
+                goal__heading: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: 0,
+                },
+                goal__label: {
+                  autoAlpha: 0,
+                  x: -1000,
+                  y: 0,
+                  scale: 1,
+                },
+                goal__image: {
+                  autoAlpha: 0,
+                  x: 1000,
+                  y: 0,
+                  scale: 1,
+                },
+                counterparty__label: {
+                  autoAlpha: 0,
+                  x: 1000,
+                  y: 0,
+                  scale: 1,
+                },
+                counterparty__image: {
+                  autoAlpha: 0,
+                  x: -1000,
+                  y: 0,
+                  scale: 1,
+                },
+                contracts__label: {
+                  autoAlpha: 0,
+                  x: -1000,
+                  y: 0,
+                  scale: 1,
+                },
+                contracts__image: {
+                  autoAlpha: 0,
+                  x: 1000,
+                  y: 0,
+                  scale: 1,
+                },
+                contracts__card: {
+                  autoAlpha: 0,
+                  x: 1000,
+                  y: 0,
+                  scale: 1,
+                },
+                stages__card: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: 1000,
+                },
+                stages__image: {
+                  autoAlpha: 0,
+                  x: 1000,
+                  y: 0,
+                  scale: 1,
+                },
+                stages__heading: {
+                  autoAlpha: 0,
+                  x: 1000,
+                  y: 0,
+                  scale: 1,
+                },
+                services__card: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: 0,
+                  scale: 0.44,
+                },
+                services__heading: {
+                  autoAlpha: 0,
+                  x: -1000,
+                  y: 0,
+                  scale: 1,
+                },
+                contact__form: {
+                  autoAlpha: 0,
+                  x: -1000,
+                  y: 0,
+                  scale: 1,
+                },
+                contact__heading: {
+                  autoAlpha: 0,
+                  x: 1500,
+                  y: 0,
+                  scale: 1,
+                },
+                contact__card: {
+                  autoAlpha: 0,
+                  x: 710,
+                  y: 0,
+                  scale: 1,
+                },
+              }
+            : {
+                hero__image: {
+                  autoAlpha: 0,
+                  y: -500,
+                  scale: 0.44,
+                },
+                hero__card: {
+                  autoAlpha: 0,
+                  x: -1000,
+                  scale: 0.44,
+                },
+                about: {
+                  autoAlpha: 0,
+                  x: 1500,
+                  scale: 0.19,
+                },
+                goal__heading: {
+                  autoAlpha: 0,
+                  y: -500,
+                },
+                goal__label: {
+                  autoAlpha: 0,
+                  x: 300,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                goal__image: {
+                  autoAlpha: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                counterparty__label: {
+                  autoAlpha: 0,
+                  x: -500,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                counterparty__image: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                contracts__card: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                contracts__label: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                contracts__image: {
+                  autoAlpha: 0,
+                  x: -500,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                stages__image: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                stages__heading: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                stages__card: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 1,
+                },
+                services__card: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+                services__heading: {
+                  autoAlpha: 0,
+                  x: 0,
+                  y: -1000,
+                  scale: 0.44,
+                },
+              };
         if (index === 0) {
           gsap.fromTo(
             "[data-animation='hero__image']",
             {
-              autoAlpha: 0,
-              y: -500,
-              scale: 0.44,
+              ...animations["hero__image"],
             },
             {
               autoAlpha: 1,
@@ -315,9 +559,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='hero__card']",
             {
-              autoAlpha: 0,
-              x: -1000,
-              scale: 0.44,
+              ...animations["hero__card"],
             },
             {
               autoAlpha: 1,
@@ -333,10 +575,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='about']",
             {
-              autoAlpha: 0,
-              x: 0,
-              y: 500,
-              scale: 0.44,
+              ...animations["about"],
             },
             {
               autoAlpha: 1,
@@ -353,9 +592,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='goal__heading']",
             {
-              autoAlpha: 0,
-              x: 0,
-              y: 0,
+              ...animations["goal__heading"],
             },
             {
               autoAlpha: 1,
@@ -369,10 +606,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='goal__label']",
             {
-              autoAlpha: 0,
-              x: -1000,
-              y: 0,
-              scale: 1,
+              ...animations["goal__label"],
             },
             {
               autoAlpha: 1,
@@ -387,10 +621,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='goal__image']",
             {
-              autoAlpha: 0,
-              x: 1000,
-              y: 0,
-              scale: 1,
+              ...animations["goal__image"],
             },
             {
               autoAlpha: 1,
@@ -407,10 +638,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='counterparty__label']",
             {
-              autoAlpha: 0,
-              x: 1000,
-              y: 0,
-              scale: 1,
+              ...animations["counterparty__label"],
             },
             {
               autoAlpha: 1,
@@ -425,10 +653,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='counterparty__image']",
             {
-              autoAlpha: 0,
-              x: -1000,
-              y: 0,
-              scale: 1,
+              ...animations["counterparty__image"],
             },
             {
               autoAlpha: 1,
@@ -445,10 +670,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='contracts__label']",
             {
-              autoAlpha: 0,
-              x: -1000,
-              y: 0,
-              scale: 1,
+              ...animations["contracts__label"],
             },
             {
               autoAlpha: 1,
@@ -463,10 +685,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='contracts__image']",
             {
-              autoAlpha: 0,
-              x: 1000,
-              y: 0,
-              scale: 1,
+              ...animations["contracts__image"],
             },
             {
               autoAlpha: 1,
@@ -481,10 +700,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='contracts__card']",
             {
-              autoAlpha: 0,
-              x: 1000,
-              y: 0,
-              scale: 1,
+              ...animations["contracts__card"],
             },
             {
               autoAlpha: 1,
@@ -501,10 +717,7 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='stages__card']",
             {
-              autoAlpha: 0,
-              x: 0,
-              y: 1000,
-              scale: 1,
+              ...animations["stages__card"],
             },
             {
               autoAlpha: 1,
@@ -513,20 +726,17 @@ export default function Home() {
               scale: 1,
               // duration: 0.5,
               delay: 0.03,
-              // stagger: {
-              //   each: 0.025,
-              //   from: "end",
-              // },
+              stagger: {
+                each: 0.025,
+                from: "end",
+              },
               ease: "power2.out",
             }
           );
           gsap.fromTo(
             "[data-animation='stages__image']",
             {
-              autoAlpha: 0,
-              x: 1000,
-              y: 0,
-              scale: 1,
+              ...animations["stages__image"],
             },
             {
               autoAlpha: 1,
@@ -541,10 +751,94 @@ export default function Home() {
           gsap.fromTo(
             "[data-animation='stages__heading']",
             {
-              autoAlpha: 0,
-              x: 1000,
+              ...animations["stages__heading"],
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
               y: 0,
               scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+        }
+        if (index === 6) {
+          gsap.fromTo(
+            "[data-animation='services__card']",
+            {
+              ...animations["services__card"],
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              // duration: 0.5,
+              delay: 0.4,
+              stagger: {
+                each: 0.03,
+                from: "start",
+              },
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='services__heading']",
+            {
+              ...animations["services__heading"],
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+        }
+        if (index === 7) {
+          gsap.fromTo(
+            "[data-animation='contact__form']",
+            {
+              ...animations["contact__form"],
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              // duration: 0.5,
+              delay: 0.4,
+              stagger: {
+                each: 0.03,
+                from: "start",
+              },
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='contact__heading']",
+            {
+              ...animations["contact__heading"],
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              delay: 0.4,
+              ease: "power2.out",
+            }
+          );
+          gsap.fromTo(
+            "[data-animation='contact__card']",
+            {
+              ...animations["contact__card"],
             },
             {
               autoAlpha: 1,
@@ -610,16 +904,13 @@ export default function Home() {
 
       const checkWheelEvent = (e) => {
         e.preventDefault();
-        console.log("Wheel event");
         const isIntentional = lethargy.check(e);
 
         if (e.ctrlKey || e.altKey) return;
 
         if (isIntentional) {
-          console.log("Intentional");
           const currentTimeStamp = e.timeStamp;
           if (currentTimeStamp - prevTimeStampRef.current > 500) {
-            console.log(e.deltaY);
             setEvents((prev) => [
               {
                 deltaX: e.deltaX,
@@ -663,13 +954,18 @@ export default function Home() {
       function handleNav(e) {
         e.preventDefault();
         if (animating) return;
-        const link = e.target.textContent.toLowerCase();
-        if (link === "services") {
+        const link = e.target.getAttribute("href");
+        if (link === "#services") {
           fadeOut(currentIndex, 6, 1);
-        } else if (link === "tasks") {
+        }
+        if (link === "#tasks") {
           fadeOut(currentIndex, 5, 1);
-        } else if (link === "about us") {
+        }
+        if (link === "#about us") {
           fadeOut(currentIndex, 1, 1);
+        }
+        if (link === "#contact") {
+          fadeOut(currentIndex, 7, 1);
         }
       }
 
@@ -702,35 +998,40 @@ export default function Home() {
         }
       }
 
+      const handleResize = () => {
+        console.log("resize");
+        setResizedWidth(window.innerWidth);
+        fadeIn(0, currentIndex, -1);
+      };
+
       // gotoSection(0, 1);
 
-      const navLinks = document.querySelectorAll(".scroll__nav");
+      const navLinks = document.querySelectorAll('[data-scroll="scroll__nav"]');
       navLinks.forEach((link) => {
         link.addEventListener("click", handleNav);
       });
 
+      window.addEventListener("resize", handleResize);
       document.querySelector(".up__btn").addEventListener("click", handleUpBtn);
-      if (isDesktop) {
-        document.addEventListener("wheel", checkWheelEvent, { passive: false });
-        document.addEventListener("touchstart", handleTouchStart, {
-          passive: true,
-        });
-        document.addEventListener("touchmove", handleTouchMove, {
-          passive: false,
-        });
-        document.addEventListener("touchend", handleTouchEnd, {
-          passive: true,
-        });
-
-        return () => {
-          document.removeEventListener("wheel", checkWheelEvent);
-          document.removeEventListener("touchstart", handleTouchStart);
-          document.removeEventListener("touchmove", handleTouchMove);
-          document.removeEventListener("touchend", handleTouchEnd);
-        };
-      }
+      document.addEventListener("wheel", checkWheelEvent, { passive: false });
+      document.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+      });
+      document.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      });
+      document.addEventListener("touchend", handleTouchEnd, {
+        passive: true,
+      });
+      return () => {
+        document.removeEventListener("wheel", checkWheelEvent);
+        document.removeEventListener("touchstart", handleTouchStart);
+        document.removeEventListener("touchmove", handleTouchMove);
+        document.removeEventListener("touchend", handleTouchEnd);
+        window.removeEventListener("resize", handleResize);
+      };
     }
-  }, []);
+  }, [resizedWidth]);
 
   const divStyle = {
     height: "100vh",
@@ -740,15 +1041,15 @@ export default function Home() {
 
   return (
     <main>
-      <Sidebar />
-      {/* <HeaderComponent
+      <Sidebar isMobile={isMobile} />
+      <HeaderComponent
         isMobile={isMobile}
         isTablet={isTablet}
         isDesktop={isDesktop}
-      /> */}
-      <UpBtn />
+      />
+      <UpBtn isMobile={isMobile} />
       <div className="container">
-        <Hero />
+        <Hero isMobile={isMobile} />
         <About />
         <Goal />
         <Counterparty />
@@ -756,7 +1057,7 @@ export default function Home() {
         <Stages />
         <Services />
         <Contact />
-        <FooterComponent />
+        <FooterComponent isMobile={isMobile} />
       </div>
     </main>
   );

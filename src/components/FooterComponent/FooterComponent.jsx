@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo";
 import Image from "next/image";
 import Background from "./footer.jpg";
 
-export const FooterComponent = () => {
+export const FooterComponent = ({ isMobile }) => {
   const infoItems = [
     {
       type: "phone",
@@ -42,9 +42,20 @@ export const FooterComponent = () => {
           <Logo color="#fff" />
         </div>
         <nav className={styles.navigation}>
-          <div className={`${styles.link} scroll__nav`}>Services</div>
-          <div className={`${styles.link} scroll__nav`}>Tasks</div>
-          <div className={`${styles.link} scroll__nav`}>About Us</div>
+          <a
+            data-scroll={!isMobile ? "scroll__nav" : ""}
+            href="#services"
+            className={styles.link}
+          >
+            Services
+          </a>
+          <a
+            data-scroll={!isMobile ? "scroll__nav" : ""}
+            href="#about"
+            className={styles.link}
+          >
+            About Us
+          </a>
         </nav>
       </div>
     </footer>

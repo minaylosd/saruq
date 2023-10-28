@@ -1,6 +1,8 @@
 .footer {
   position: relative;
+  margin: 0;
 }
+
 .background {
   position: relative;
   width: 100%;
@@ -92,6 +94,9 @@
   }
   .navigation {
     flex-direction: column;
+  }
+  .footer {
+    margin: calc(var(--width-k) * 80) 0 0 0;
   }
 }
 

@@ -70,9 +70,12 @@ export const Services = () => {
     },
   ];
   return (
-    <section className="section">
+    <section id="services" className="section">
       <div className={styles.content}>
-        <div className={styles.heading__wrapper}>
+        <div
+          data-animation="services__heading"
+          className={styles.heading__wrapper}
+        >
           <div className={styles.heading__line}></div>
           <h1 className={styles.heading}>Our services</h1>
           <div className={styles.line}></div>
@@ -82,7 +85,11 @@ export const Services = () => {
         </div>
         <div className={styles.card__wrapper}>
           {cardItems.map((item, index) => (
-            <div className={styles.card} key={index}>
+            <div
+              data-animation="services__card"
+              className={styles.card}
+              key={index}
+            >
               <div className={styles.card__heading__wrapper}>
                 <div style={item.geometry_style}>
                   <Geometry shape={item.geometry} />

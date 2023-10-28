@@ -76,37 +76,37 @@ function closeMenuTween({ onComplete }) {
   );
 }
 
-export const Menu = ({ toggleMenu }) => {
+export const Menu = ({ toggleMenu, isMobile }) => {
   return (
-    <nav className={styles.navigation}>
-      <div
-        onClick={toggleMenu}
-        data-animation="menu-link"
-        className={`${styles.link} scroll__nav`}
-      >
-        Services
-      </div>
-      <div
-        onClick={toggleMenu}
-        data-animation="menu-link"
-        className={`${styles.link} scroll__nav`}
-      >
-        Tasks
-      </div>
-      <div
-        onClick={toggleMenu}
-        data-animation="menu-link"
-        className={`${styles.link} scroll__nav`}
-      >
-        About Us
-      </div>
-    </nav>
+    <>
+      <nav onClick={toggleMenu} className={styles.navigation}>
+        <a
+          href="#services"
+          data-scroll={!isMobile ? "scroll__nav" : ""}
+          data-animation="menu-link"
+          className={styles.link}
+          onClick={toggleMenu}
+        >
+          Services
+        </a>
+        <a
+          href="#about"
+          data-scroll={!isMobile ? "scroll__nav" : ""}
+          onClick={toggleMenu}
+          data-animation="menu-link"
+          className={styles.link}
+        >
+          About Us
+        </a>
+      </nav>
+    </>
   );
 };
 
-export const Sidebar = () => {
+export const Sidebar = ({ isMobile }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  function toggleMenu() {
+  function toggleMenu(e) {
+    e.preventDefault();
     isMenuOpen
       ? closeMenuTween({
           onComplete: () => setIsMenuOpen(false),
@@ -134,7 +134,7 @@ export const Sidebar = () => {
           >
             <Arrow />
           </div>
-          <Menu toggleMenu={toggleMenu} />
+          <Menu isMobile={isMobile} toggleMenu={toggleMenu} />
         </div>
       </aside>
     </>

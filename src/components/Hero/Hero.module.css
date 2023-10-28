@@ -111,6 +111,13 @@
 }
 
 .main_btn {
+  padding: calc(var(--width-k) * 14) calc(var(--width-k) * 36);
+  border-radius: calc(var(--width-k) * 6);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-family: "Inter", sans-serif;
   background-color: var(--btn);
   color: var(--white);
   border: var(--width-k) solid var(--btn);
@@ -123,6 +130,13 @@
 }
 
 .sub_btn {
+  padding: calc(var(--width-k) * 14) calc(var(--width-k) * 36);
+  border-radius: calc(var(--width-k) * 6);
+  font-size: calc(var(--width-k) * 24);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-family: "Inter", sans-serif;
   background-color: var(--white);
   color: var(--btn);
   border: var(--width-k) solid var(--btn);
@@ -240,5 +254,15 @@
     width: fit-content;
     height: fit-content;
     padding: calc(var(--width-k) * 23) calc(var(--width-k) * 16);
+  }
+
+  .main_btn {
+    font-size: calc(var(--width-k) * 12);
+    padding: calc(var(--width-k) * 7) calc(var(--width-k) * 17);
+  }
+
+  .sub_btn {
+    font-size: calc(var(--width-k) * 12);
+    padding: calc(var(--width-k) * 7) calc(var(--width-k) * 17);
   }
 }

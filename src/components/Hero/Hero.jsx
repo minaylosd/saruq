@@ -1,22 +1,30 @@
 import Photo from "./heroImg.jpg";
 import Image from "next/image";
 import styles from "./Hero.module.css";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useEffect } from "react";
 
-export const Hero = () => {
+export const Hero = ({ isMobile }) => {
   return (
-    <section className="section">
+    <section id="hero" className="section">
       <div className={styles.content}>
         <div data-animation="hero__image" className={styles.image__wrapper}>
           <Image src={Photo} fill={true} alt="Hero image" />
         </div>
         <div data-animation="hero__card" className={styles.card__wrapper}>
           <nav className={styles.navigation}>
-            <div className={`${styles.link} scroll__nav`}>Services</div>
-            <div className={`${styles.link} scroll__nav`}>Tasks</div>
-            <div className={`${styles.link} scroll__nav`}>About Us</div>
+            <a
+              data-scroll={!isMobile ? "scroll__nav" : ""}
+              href="#services"
+              className={styles.link}
+            >
+              Services
+            </a>
+            <a
+              data-scroll={!isMobile ? "scroll__nav" : ""}
+              href="#about"
+              className={styles.link}
+            >
+              About Us
+            </a>
           </nav>
           <div className={styles.rotated}>Emirates</div>
           <div className={styles.rectangle}></div>
@@ -28,10 +36,20 @@ export const Hero = () => {
               Doing business with emirates was never been so easy
             </p>
             <div className={styles.btn__wrapper}>
-              <button className={styles.main_btn}>Find the supplier</button>
-              <button className={styles.sub_btn}>
+              <a
+                data-scroll={!isMobile ? "scroll__nav" : ""}
+                href="#contact"
+                className={styles.main_btn}
+              >
+                Find the supplier
+              </a>
+              <a
+                data-scroll={!isMobile ? "scroll__nav" : ""}
+                href="#contact"
+                className={styles.sub_btn}
+              >
                 Calculate shipping cost
-              </button>
+              </a>
             </div>
           </div>
         </div>

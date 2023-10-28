@@ -39,11 +39,15 @@ main {
 
 section {
   height: 100vh;
+  overflow: hidden;
 }
 
 .container {
   overflow: hidden;
-  /* height: 100vh; */
+}
+
+.mobile {
+  display: none;
 }
 
 h1 {
@@ -52,16 +56,6 @@ h1 {
   line-height: normal;
   text-transform: uppercase;
   color: var(--primary);
-}
-
-button {
-  padding: calc(var(--width-k) * 14) calc(var(--width-k) * 36);
-  border-radius: calc(var(--width-k) * 6);
-  font-size: calc(var(--width-k) * 24);
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  font-family: "Inter", sans-serif;
 }
 
 aside {
@@ -164,6 +158,18 @@ textarea::placeholder {
     --width-k: calc(100vw / 390);
   }
 
+  .mobile {
+    display: flex;
+  }
+
+  .tablet {
+    display: none;
+  }
+
+  main {
+    overflow: auto;
+  }
+
   header {
     display: flex;
     padding: calc(var(--width-k) * 7) calc(var(--width-k) * 14);
@@ -171,11 +177,6 @@ textarea::placeholder {
 
   aside {
     display: none;
-  }
-
-  button {
-    font-size: calc(var(--width-k) * 12);
-    padding: calc(var(--width-k) * 7) calc(var(--width-k) * 17);
   }
 
   section {

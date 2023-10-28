@@ -5,7 +5,7 @@ import styles from "./About.module.css";
 
 export const About = () => {
   return (
-    <section data-animation="about" className="section">
+    <section id="about" data-animation="about" className="section">
       <div className={styles.spacing}>
         <div className={styles.characteristics}>
           <div className={styles.characteristics__item}>

@@ -2,26 +2,55 @@ import styles from "./Contact.module.css";
 import Rectangle from "../Rectangle/Rectangle";
 import WideRectangle from "./WideRectangle";
 import InfoIcons from "../InfoIcons/InfoIcons";
+import { useState, useEffect } from "react";
+
+const initValues = { name: "", email: "", message: "" };
+
+const initState = { values: initValues };
 
 export const Contact = () => {
-  const infoItems = [
-    {
-      type: "email",
-      value: "info@saruqtijara.com",
-    },
-    {
-      type: "phone",
-      value: "+971 56 808 2046",
-    },
-    {
-      type: "address",
-      value:
-        "Business Center 1, M Floor, The Meydan Hotel, Nad Al Sheba, Dubai, U.A.E.",
-    },
-  ];
+  const [state, setState] = useState(initState);
+
+  const { values } = state;
+
+  const handleChange = ({ target }) => {
+    console.log("handleChange called");
+    console.log("target.name:", target.name);
+    console.log("target.value:", target.value);
+    setState((prev) => ({
+      ...prev,
+      values: { ...prev.values, [target.name]: target.value },
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // You can add your form submission logic here
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("email", values.email);
+    formData.append("message", values.message);
+
+    try {
+      const response = await fetch("/sendEmail.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        // Handle success, e.g., show a confirmation message
+        console.log("Email sent successfully");
+      } else {
+        // Handle error, e.g., show an error message
+        console.error("Error sending email");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
   return (
-    <section className="section">
-      <div className={styles.geometry}>
+    <section id="contact" className="section">
+      <div data-animation="contact__heading" className={styles.geometry}>
         <div className={styles.rectangle}>
           <Rectangle turn={false} left={true} />
         </div>
@@ -38,50 +67,83 @@ export const Contact = () => {
         </div>
       </div>
       <div className={styles.content}>
-        <form className={styles.form}>
-          <div className={styles.form__group}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div data-animation="contact__form" className={styles.form__group}>
             <input
               className={styles.form__input}
               type="text"
               placeholder="Name"
               id="name"
+              name="name"
               required
+              autoComplete="on"
+              value={values.name}
+              onChange={handleChange}
             />
           </div>
-          <div className={styles.form__group}>
+          <div data-animation="contact__form" className={styles.form__group}>
             <input
               className={styles.form__input}
               type="email"
               placeholder="Email"
               id="email"
+              name="email"
               required
+              autoComplete="on"
+              value={values.email}
+              onChange={handleChange}
             />
           </div>
-          <div className={styles.form__group}>
+          <div data-animation="contact__form" className={styles.form__group}>
             <textarea
               className={styles.form__input}
               placeholder="Message"
               id="message"
+              name="message"
               required
+              value={values.message}
+              onChange={handleChange}
             />
           </div>
-          <button className={styles.form__button}>Send</button>
+          <button
+            data-animation="contact__form"
+            className={styles.form__button}
+          >
+            Send
+          </button>
         </form>
-        <div className={styles.card}>
+        <div data-animation="contact__card" className={styles.card}>
           <div className={styles.card__heading__wrapper}>
             <h3 className={styles.card__heading}>Our info</h3>
             <div className={styles.card__rectangle}>
               <WideRectangle />
             </div>
           </div>
-          {infoItems.map((item, index) => (
-            <div className={styles.card__item} key={index}>
-              <div className={styles.icon}>
-                <InfoIcons type={item.type} />
-              </div>
-              <p className={styles.card__text}>{item.value}</p>
+          <div className={styles.card__item}>
+            <div className={styles.icon}>
+              <InfoIcons type="email" />
             </div>
-          ))}
+            <a href="mailto:info@ips-pacific.com" className={styles.card__text}>
+              info@ips-pacific.com
+            </a>
+          </div>
+          <div className={styles.card__item}>
+            <div className={styles.icon}>
+              <InfoIcons type="phone" />
+            </div>
+            <a href="tel:+85225308135" className={styles.card__text}>
+              +852 2530 8135
+            </a>
+          </div>
+          <div className={styles.card__item}>
+            <div className={styles.icon}>
+              <InfoIcons type="address" />
+            </div>
+            <p className={styles.card__text}>
+              Suite 2207-09, 22/F, Tower Two, Lippo Centre, 89 Queensway,
+              Admiralty, Hong Kong
+            </p>
+          </div>
         </div>
       </div>
     </section>

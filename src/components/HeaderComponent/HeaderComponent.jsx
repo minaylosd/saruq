@@ -1,3 +1,4 @@
+"use client";
 import Logo from "../Logo/Logo.jsx";
 import Burger from "../Burger/Burger.jsx";
 import Arrow from "../Sidebar/Arrow.jsx";
@@ -5,123 +6,140 @@ import styles from "./HeaderComponent.module.css";
 import { useState } from "react";
 import gsap from "gsap";
 
-function openHeaderMenuTween({ onComplete }) {
-  //   gsap.to("[data-animation='menu-wrapper']", {
-  //     width: "150px",
-  //     ease: "expo.out",
-  //     duration: 0.25,
-  //   });
-  //   gsap.to("[data-animation='menu-logo']", {
-  //     x: 24,
-  //     duration: 0.5,
-  //     delay: 0.1,
-  //     ease: "expo.out",
-  //   });
-  //   gsap.to("[data-animation='menu-burger']", {
-  //     x: -50,
-  //     autoAlpha: 0,
-  //     delay: 0.1,
-  //     duration: 0.5,
-  //     ease: "expo.out",
-  //   });
-  //   gsap.fromTo(
-  //     "[data-animation='menu-link']",
-  //     { x: 0, autoAlpha: 0 },
-  //     {
-  //       x: -165,
-  //       autoAlpha: 1,
-  //       stagger: 0.025,
-  //       delay: 0.1,
-  //       ease: "expo.out",
-  //       onComplete: onComplete,
-  //     }
-  //   );
-  // }
-  // function closeHeaderMenuTween({ onComplete }) {
-  //   gsap.to("[data-animation='menu-wrapper']", {
-  //     width: "100px",
-  //     ease: "expo.out",
-  //     duration: 0.5,
-  //   });
-  //   gsap.to("[data-animation='menu-logo']", {
-  //     x: 0,
-  //     duration: 0.5,
-  //     ease: "expo.out",
-  //   });
-  //   gsap.to("[data-animation='menu-burger']", {
-  //     x: 0,
-  //     autoAlpha: 1,
-  //     duration: 0.5,
-  //     ease: "expo.out",
-  //   });
-  //   gsap.fromTo(
-  //     "[data-animation='menu-link']",
-  //     { x: 0, autoAlpha: 1 },
-  //     {
-  //       x: 165,
-  //       autoAlpha: 0,
-  //       stagger: 0.025,
-  //       delay: 0.1,
-  //       ease: "expo.out",
-  //       onComplete: onComplete,
-  //     }
-  //   );
-}
-
-export const HeaderMenu = ({ closeMenuTween }) => {
+export const HeaderMenu = ({ toggleHeaderMenu, isMobile }) => {
   return (
-    <nav className={styles.navigation}>
-      <div
-        data-animation="header-link"
-        className={`${styles.link} scroll__nav`}
+    <>
+      <nav
+        data-animation="nav-wrapper"
+        onClick={toggleHeaderMenu}
+        className={styles.navigation}
       >
-        Services
-      </div>
-      <div
-        data-animation="header-link"
-        className={`${styles.link} scroll__nav`}
-      >
-        Tasks
-      </div>
-      <div
-        data-animation="header-link"
-        className={`${styles.link} scroll__nav`}
-      >
-        About Us
-      </div>
-    </nav>
+        <a
+          href="#services"
+          data-scroll={!isMobile ? "scroll__nav" : ""}
+          data-animation="header-link"
+          className={styles.link}
+        >
+          Services
+        </a>
+        <a
+          href="#about"
+          data-scroll={!isMobile ? "scroll__nav" : ""}
+          data-animation="header-link"
+          className={styles.link}
+        >
+          About Us
+        </a>
+      </nav>
+    </>
   );
 };
 
-export const HeaderComponent = () => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // function toggleMenu() {
-  //   isMenuOpen
-  //     ? closeMenuTween({
-  //         onComplete: () => setIsMenuOpen(false),
-  //       })
-  //     : openMenuTween({
-  //         onComplete: () => setIsMenuOpen(true),
-  //       });
-  // }
+export const HeaderComponent = ({ isMobile }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  function toggleHeaderMenu(e) {
+    {
+      !isMobile && e.preventDefault();
+    }
+    isMenuOpen
+      ? closeHeaderMenuTween({
+          onComplete: () => setIsMenuOpen(false),
+        })
+      : openHeaderMenuTween({
+          onComplete: () => setIsMenuOpen(true),
+        });
+  }
+
+  function openHeaderMenuTween({ onComplete }) {
+    gsap.fromTo(
+      "[data-animation='nav-wrapper']",
+      {
+        x: 250,
+        autoAlpha: 0,
+      },
+      { x: 0, autoAlpha: 1, ease: "expo.out", duration: 0.25 }
+    );
+    gsap.to("[data-animation='menu-logo']", {
+      x: 24,
+      duration: 0.5,
+      delay: 0.25,
+      ease: "expo.out",
+    });
+    gsap.to("[data-animation='header-burger']", {
+      x: 50,
+      autoAlpha: 0,
+      delay: 0.1,
+      duration: 0.5,
+      ease: "expo.out",
+    });
+    gsap.fromTo(
+      "[data-animation='header-link']",
+      { x: 165, autoAlpha: 0 },
+      {
+        x: 0,
+        autoAlpha: 1,
+        stagger: 0.025,
+        delay: 0.1,
+        ease: "expo.out",
+        onComplete: onComplete,
+      }
+    );
+  }
+  function closeHeaderMenuTween({ onComplete }) {
+    gsap.fromTo(
+      "[data-animation='nav-wrapper']",
+      {
+        x: 0,
+        autoAlpha: 0,
+      },
+      { x: 200, autoAlpha: 1, ease: "expo.out", duration: 0.25 }
+    );
+    gsap.to("[data-animation='menu-logo']", {
+      x: 0,
+      duration: 0.5,
+      ease: "expo.out",
+    });
+    gsap.to("[data-animation='header-burger']", {
+      x: 0,
+      autoAlpha: 1,
+      duration: 0.5,
+      ease: "expo.out",
+    });
+    gsap.fromTo(
+      "[data-animation='header-link']",
+      { x: 0, autoAlpha: 1 },
+      {
+        x: 165,
+        autoAlpha: 0,
+        stagger: 0.025,
+        delay: 0.1,
+        ease: "expo.out",
+        onComplete: onComplete,
+      }
+    );
+  }
   return (
     <header className="header">
       <div className={styles.logo}>
         <Logo color="#4A1A61" />
       </div>
-      <div className={styles.burger}>
+      <div
+        data-animation="header-burger"
+        onClick={toggleHeaderMenu}
+        className={styles.burger}
+      >
         <Burger />
       </div>
-      {/* <div className={styles.menu}>
+      <div className={styles.menu}>
         <div
-          onClick={toggleMenu}
-          data-animation="menu-link"
+          onClick={toggleHeaderMenu}
+          data-animation="header-link"
           className={styles.arrow}
         >
           <Arrow />
         </div>
-        <HeaderMenu closeMenuTween={closeMenuTween} />
-      </div> */}
+        <HeaderMenu isMobile={isMobile} toggleHeaderMenu={toggleHeaderMenu} />
+      </div>
     </header>
   );
 };
