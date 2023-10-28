@@ -105,6 +105,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-start;
+    justify-content: flex-start;
     gap: calc(var(--width-k) * 40);
     padding: calc(var(--width-k) * 34) calc(var(--width-k) * 14)
       calc(var(--width-k) * 14) calc(var(--width-k) * 14);

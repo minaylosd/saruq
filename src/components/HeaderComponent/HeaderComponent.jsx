@@ -95,15 +95,11 @@ export const HeaderComponent = ({ isMobile }) => {
       },
       { x: 500, autoAlpha: 1, ease: "expo.out", duration: 0.25 }
     );
-    gsap.to("[data-animation='menu-logo']", {
-      x: 0,
-      duration: 0.5,
-      ease: "expo.out",
-    });
     gsap.to("[data-animation='header-burger']", {
       x: 0,
       autoAlpha: 1,
       duration: 0.5,
+      delay: 0.25,
       ease: "expo.out",
     });
     gsap.fromTo(
