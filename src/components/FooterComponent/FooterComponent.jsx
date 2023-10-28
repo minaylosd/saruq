@@ -27,16 +27,31 @@ export const FooterComponent = ({ isMobile }) => {
       </div>
       <div className={styles.index}>
         <div className={styles.info}>
-          {infoItems.map((item, index) => (
-            <div className={styles.card__item} key={index}>
-              <div className={styles.icon}>
-                <InfoIcons type={item.type} />
-              </div>
-              <div className={styles.flex}>
-                <p className={styles.card__text}>{item.value}</p>
-              </div>
+          <div className={styles.card__item}>
+            <div className={styles.icon}>
+              <InfoIcons type="email" />
             </div>
-          ))}
+            <a href="mailto:info@ips-pacific.com" className={styles.card__text}>
+              info@ips-pacific.com
+            </a>
+          </div>
+          <div className={styles.card__item}>
+            <div className={styles.icon}>
+              <InfoIcons type="phone" />
+            </div>
+            <a href="tel:+85225308135" className={styles.card__text}>
+              +852 2530 8135
+            </a>
+          </div>
+          <div className={styles.card__item}>
+            <div className={styles.icon}>
+              <InfoIcons type="address" />
+            </div>
+            <p className={styles.card__text}>
+              Suite 2207-09, 22/F, Tower Two, Lippo Centre, 89 Queensway,
+              Admiralty, Hong Kong
+            </p>
+          </div>
         </div>
         <div className={styles.logo}>
           <Logo color="#fff" />

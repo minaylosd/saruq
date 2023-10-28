@@ -91,6 +91,7 @@
     width: 100%;
     gap: calc(var(--width-k) * 150);
     margin: calc(var(--width-k) * 100) 0 auto auto;
+    padding-top: calc(var(--width-k) * 80);
   }
   .image {
     order: 2;

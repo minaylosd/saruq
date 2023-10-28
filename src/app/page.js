@@ -958,10 +958,7 @@ export default function Home() {
         if (link === "#services") {
           fadeOut(currentIndex, 6, 1);
         }
-        if (link === "#tasks") {
-          fadeOut(currentIndex, 5, 1);
-        }
-        if (link === "#about us") {
+        if (link === "#about") {
           fadeOut(currentIndex, 1, 1);
         }
         if (link === "#contact") {

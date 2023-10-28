@@ -14,6 +14,13 @@ export const HeaderMenu = ({ toggleHeaderMenu, isMobile }) => {
         onClick={toggleHeaderMenu}
         className={styles.navigation}
       >
+        <div
+          onClick={toggleHeaderMenu}
+          data-animation="header-link"
+          className={styles.arrow}
+        >
+          <Arrow />
+        </div>
         <a
           href="#services"
           data-scroll={!isMobile ? "scroll__nav" : ""}
@@ -51,27 +58,21 @@ export const HeaderComponent = ({ isMobile }) => {
   }
 
   function openHeaderMenuTween({ onComplete }) {
-    gsap.fromTo(
-      "[data-animation='nav-wrapper']",
-      {
-        x: 250,
-        autoAlpha: 0,
-      },
-      { x: 0, autoAlpha: 1, ease: "expo.out", duration: 0.25 }
-    );
-    gsap.to("[data-animation='menu-logo']", {
-      x: 24,
-      duration: 0.5,
-      delay: 0.25,
-      ease: "expo.out",
-    });
     gsap.to("[data-animation='header-burger']", {
       x: 50,
       autoAlpha: 0,
       delay: 0.1,
-      duration: 0.5,
+      duration: 0.25,
       ease: "expo.out",
     });
+    gsap.fromTo(
+      "[data-animation='nav-wrapper']",
+      {
+        x: 200,
+        autoAlpha: 0,
+      },
+      { x: 0, autoAlpha: 1, ease: "expo.out", duration: 0.25, delay: 0.25 }
+    );
     gsap.fromTo(
       "[data-animation='header-link']",
       { x: 165, autoAlpha: 0 },
@@ -79,7 +80,7 @@ export const HeaderComponent = ({ isMobile }) => {
         x: 0,
         autoAlpha: 1,
         stagger: 0.025,
-        delay: 0.1,
+        delay: 0.5,
         ease: "expo.out",
         onComplete: onComplete,
       }
@@ -131,13 +132,6 @@ export const HeaderComponent = ({ isMobile }) => {
         <Burger />
       </div>
       <div className={styles.menu}>
-        <div
-          onClick={toggleHeaderMenu}
-          data-animation="header-link"
-          className={styles.arrow}
-        >
-          <Arrow />
-        </div>
         <HeaderMenu isMobile={isMobile} toggleHeaderMenu={toggleHeaderMenu} />
       </div>
     </header>
