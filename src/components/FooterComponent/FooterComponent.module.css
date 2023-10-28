@@ -114,6 +114,7 @@
   }
   .logo {
     width: calc(var(--width-k) * 39);
+    height: calc(var(--width-k) * 52);
     margin-right: 0;
   }
   .navigation {

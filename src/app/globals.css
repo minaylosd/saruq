@@ -40,6 +40,7 @@ main {
 section {
   height: 100vh;
   overflow: hidden;
+  margin-top: 0;
 }
 
 .container {
@@ -181,6 +182,11 @@ textarea::placeholder {
 
   section {
     height: fit-content;
+    overflow: visible;
+    margin-top: calc(var(--width-k) * 100);
+  }
+  section:first-child {
+    margin-top: 0;
   }
 
   input {

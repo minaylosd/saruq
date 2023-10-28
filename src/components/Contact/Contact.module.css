@@ -140,6 +140,7 @@
   .geometry {
     margin: 0 auto auto calc(var(--width-k) * 55);
     width: calc(var(--width-k) * 1607);
+    padding-top: 0;
   }
   .heading {
     font-size: calc(var(--width-k) * 32);
@@ -150,6 +151,7 @@
   }
   .rectangle {
     width: calc(var(--width-k) * 66);
+    top: 0;
   }
   .divider {
     display: none;
@@ -187,8 +189,10 @@
     width: calc(var(--width-k) * 248);
   }
   .card__text {
-    color: var(--white);
     font-size: calc(var(--width-k) * 20);
     max-width: calc(var(--width-k) * 300);
+  }
+  .card__item {
+    margin-bottom: calc(var(--width-k) * 20);
   }
 }

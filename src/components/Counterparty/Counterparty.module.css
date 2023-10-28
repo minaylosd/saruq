@@ -114,6 +114,7 @@
     flex-direction: column;
     width: 100%;
     gap: calc(var(--width-k) * 28);
+    padding-top: calc(var(--width-k) * 100);
   }
   .image {
     order: 2;

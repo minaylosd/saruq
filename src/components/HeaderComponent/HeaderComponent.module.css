@@ -31,8 +31,8 @@
   position: fixed;
   top: 0;
   right: 0;
-  opacity: 0;
   transform-origin: top right;
+  transform: translate(100%, 0);
   width: calc(var(--width-k) * 200);
   display: flex;
   flex-direction: column;
@@ -72,5 +72,8 @@
   .navigation {
     padding: 0 calc(var(--width-k) * 14) calc(var(--width-k) * 14)
       calc(var(--width-k) * 14);
+  }
+  .link {
+    font-size: calc(var(--width-k) * 24);
   }
 }

@@ -81,7 +81,6 @@
 }
 
 .square {
-  /* position: absolute; */
   transform-origin: center;
   width: calc(var(--width-k) * 52);
   height: calc(var(--width-k) * 52);
@@ -152,7 +151,7 @@
 
 @media (max-width: 767px) {
   .heading__wrapper {
-    padding: calc(var(--width-k) * 84) 0 0 calc(var(--width-k) * 40);
+    padding: 0 0 0 calc(var(--width-k) * 40);
     margin-bottom: calc(var(--width-k) * 24);
   }
   .heading {

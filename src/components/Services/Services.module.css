@@ -150,6 +150,9 @@
   .rectangle {
     display: none;
   }
+  .content {
+    padding-top: 0;
+  }
   .heading__wrapper {
     gap: calc(var(--width-k) * 16);
     padding: calc(var(--width-k) * 23) calc(var(--width-k) * 58)
@@ -162,12 +165,13 @@
   .line {
     width: calc(var(--width-k) * 18);
     height: calc(var(--width-k) * 86);
+    top: 0;
   }
   .list {
     height: fit-content;
   }
   .list__item {
-    padding-top: calc(var(--width-k) * 14);
-    font-size: calc(var(--width-k) * 21.2);
+    padding-top: calc(var(--width-k) * 8);
+    font-size: calc(var(--width-k) * 18);
   }
 }
