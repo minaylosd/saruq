@@ -93,7 +93,7 @@ export const HeaderComponent = ({ isMobile }) => {
         x: 0,
         autoAlpha: 0,
       },
-      { x: 200, autoAlpha: 1, ease: "expo.out", duration: 0.25 }
+      { x: 500, autoAlpha: 1, ease: "expo.out", duration: 0.25 }
     );
     gsap.to("[data-animation='menu-logo']", {
       x: 0,
