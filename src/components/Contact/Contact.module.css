@@ -119,10 +119,10 @@
   .geometry {
     width: 100%;
     margin: 0 0 auto calc(var(--width-k) * 108);
-    padding-top: calc(var(--width-k) * 170);
+    padding-top: calc(var(--width-k) * 100);
   }
   .rectangle {
-    top: calc(var(--width-k) * 170);
+    top: calc(var(--width-k) * 100);
   }
   .divider {
     width: calc(var(--width-k) * 424);

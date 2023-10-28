@@ -130,7 +130,7 @@
 @media (max-width: 1024px) {
   .content {
     width: 100%;
-    padding-top: 0;
+    padding-top: calc(var(--width-k) * 100);
   }
   .heading__wrapper {
     width: 100%;
@@ -166,7 +166,7 @@
   .content {
     margin: calc(var(--width-k) * 250) 0 auto auto;
     width: 100vw;
-    padding-top: calc(var(--width-k) * 80);
+    padding-top: calc(var(--width-k) * 100);
   }
   .heading__wrapper {
     width: 100%;
