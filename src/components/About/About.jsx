@@ -25,7 +25,7 @@ export const About = () => {
           <div className={styles.rotated}>Quality</div>
           <div className={styles.image__wrapper}>
             <div className={styles.image}>
-              <Image src={Photo} fill={true} alt="About" />
+              <Image src={Photo} fill={true} alt="About" placeholder="blur" />
             </div>
           </div>
           <div className={styles.txt__section}>

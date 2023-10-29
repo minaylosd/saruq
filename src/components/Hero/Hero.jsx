@@ -7,7 +7,7 @@ export const Hero = ({ isMobile }) => {
     <section id="hero" className="section">
       <div className={styles.content}>
         <div data-animation="hero__image" className={styles.image__wrapper}>
-          <Image src={Photo} fill={true} alt="Hero image" />
+          <Image src={Photo} fill={true} alt="Hero image" placeholder="blur" />
         </div>
         <div data-animation="hero__card" className={styles.card__wrapper}>
           <nav className={styles.navigation}>

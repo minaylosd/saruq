@@ -8,7 +8,12 @@ export const FooterComponent = ({ isMobile }) => {
   return (
     <footer className={`${styles.footer} section`}>
       <div className={styles.background}>
-        <Image src={Background} fill={true} alt="background image" />
+        <Image
+          src={Background}
+          fill={true}
+          alt="background image"
+          placeholder="blur"
+        />
       </div>
       <div className={styles.index}>
         <div className={styles.info}>
