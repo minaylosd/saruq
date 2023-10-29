@@ -724,7 +724,6 @@ export default function Home() {
               x: 0,
               y: 0,
               scale: 1,
-              // duration: 0.5,
               delay: 0.03,
               stagger: {
                 each: 0.025,
@@ -775,7 +774,6 @@ export default function Home() {
               x: 0,
               y: 0,
               scale: 1,
-              // duration: 0.5,
               delay: 0.4,
               stagger: {
                 each: 0.03,
@@ -811,7 +809,6 @@ export default function Home() {
               x: 0,
               y: 0,
               scale: 1,
-              // duration: 0.5,
               delay: 0.4,
               stagger: {
                 each: 0.03,
@@ -910,7 +907,7 @@ export default function Home() {
 
         if (isIntentional) {
           const currentTimeStamp = e.timeStamp;
-          if (currentTimeStamp - prevTimeStampRef.current > 500) {
+          if (currentTimeStamp - prevTimeStampRef.current > 700) {
             setEvents((prev) => [
               {
                 deltaX: e.deltaX,

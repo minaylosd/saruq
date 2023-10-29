@@ -159,6 +159,16 @@ textarea::placeholder {
     --width-k: calc(100vw / 390);
   }
 
+  #services {
+    margin-top: 0;
+    padding-top: calc(var(--width-k) * 100);
+  }
+
+  #contact {
+    margin-top: 0;
+    padding-top: calc(var(--width-k) * 100);
+  }
+
   .mobile {
     display: flex;
   }

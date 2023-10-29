@@ -2,7 +2,7 @@ import styles from "./Contact.module.css";
 import Rectangle from "../Rectangle/Rectangle";
 import WideRectangle from "./WideRectangle";
 import InfoIcons from "../InfoIcons/InfoIcons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const initValues = { name: "", email: "", message: "" };
 
@@ -14,38 +14,10 @@ export const Contact = () => {
   const { values } = state;
 
   const handleChange = ({ target }) => {
-    console.log("handleChange called");
-    console.log("target.name:", target.name);
-    console.log("target.value:", target.value);
     setState((prev) => ({
       ...prev,
       values: { ...prev.values, [target.name]: target.value },
     }));
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // You can add your form submission logic here
-    const formData = new FormData();
-    formData.append("name", values.name);
-    formData.append("email", values.email);
-    formData.append("message", values.message);
-
-    try {
-      const response = await fetch("/sendEmail.php", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        // Handle success, e.g., show a confirmation message
-        console.log("Email sent successfully");
-      } else {
-        // Handle error, e.g., show an error message
-        console.error("Error sending email");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
   };
 
   return (
@@ -67,7 +39,7 @@ export const Contact = () => {
         </div>
       </div>
       <div className={styles.content}>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form}>
           <div data-animation="contact__form" className={styles.form__group}>
             <input
               className={styles.form__input}
