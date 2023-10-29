@@ -10,7 +10,7 @@ const Arrow = () => (
       stroke="#4A1A61"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ strokeWidth: "calc(var(--width-k) * 2)" }}
+      strokeWidth="2"
       d="M6.833 13 1 7m0 0 5.833-6M1 7h14"
     />
   </svg>

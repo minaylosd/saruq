@@ -33,7 +33,7 @@
 }
 
 .image__wrapper img {
-  width: 100%;
+  width: calc(var(--width-k) * 1446);
   height: 100%;
   object-fit: cover;
   object-position: center calc(var(--width-k) * -760);
