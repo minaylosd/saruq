@@ -2,24 +2,9 @@ import styles from "./FooterComponent.module.css";
 import InfoIcons from "../InfoIcons/InfoIcons";
 import Logo from "../Logo/Logo";
 import Image from "next/image";
-import Background from "./footer.jpg";
+import Background from "./footer.png";
 
 export const FooterComponent = ({ isMobile }) => {
-  const infoItems = [
-    {
-      type: "phone",
-      value: "+852 2530 8135",
-    },
-    {
-      type: "email",
-      value: "info@ips-pacific.com",
-    },
-    {
-      type: "address",
-      value:
-        "Suite 2207-09, 22/F, Tower Two, Lippo Centre, 89 Queensway, Admiralty, Hong Kong",
-    },
-  ];
   return (
     <footer className={`${styles.footer} section`}>
       <div className={styles.background}>

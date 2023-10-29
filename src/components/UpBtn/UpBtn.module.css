@@ -4,8 +4,8 @@
     calc(var(--width-k) * 14) 0px rgba(0, 0, 0, 0.23);
   border-radius: calc(var(--width-k) * 10);
   position: fixed;
-  top: calc(var(--width-k) * 822);
-  left: calc(var(--width-k) * 1807);
+  bottom: calc(var(--width-k) * 40);
+  right: calc(var(--width-k) * 65);
   z-index: 130;
   display: flex;
   flex-direction: column;
@@ -33,15 +33,13 @@
 
 @media (max-width: 1024px) {
   .button {
-    top: calc(var(--width-k) * 1240);
-    left: calc(var(--width-k) * 919);
+    right: calc(var(--width-k) * 40);
   }
 }
 
 @media (max-width: 767px) {
   .button {
-    top: calc(var(--width-k) * 757);
-    left: calc(var(--width-k) * 313);
+    right: calc(var(--width-k) * 14);
     display: none;
   }
 }

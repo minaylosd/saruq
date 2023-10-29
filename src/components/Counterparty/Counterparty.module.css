@@ -46,8 +46,20 @@
 
 .image {
   position: relative;
+}
+
+.image__wrapper {
   width: calc(var(--width-k) * 1160);
   height: calc(var(--width-k) * 452);
+  overflow: hidden;
+}
+
+.image__wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center calc(var(--width-k) * -300);
+  transform: scaleX(-1);
 }
 
 .card {
@@ -118,6 +130,9 @@
   }
   .image {
     order: 2;
+  }
+  .image__wrapper img {
+    object-position: calc(var(--width-k) * 150) calc(var(--width-k) * -300);
   }
   .card {
     width: calc(var(--width-k) * 380);

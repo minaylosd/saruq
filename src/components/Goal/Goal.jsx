@@ -24,7 +24,10 @@ export const Goal = () => {
           <div className={styles.label__txt}>client</div>
         </div>
         <div data-animation="goal__image" className={styles.image}>
-          <Image src={Photo} fill={true} alt="Goal" />
+          <div className={styles.image__wrapper}>
+            <Image src={Photo} fill={true} alt="Goal" />
+            <div className={styles.gradient}></div>
+          </div>
           <div className={styles.card}>
             <p className={styles.subHeading}>Orders below 10 000$</p>
             <p className={styles.description}>

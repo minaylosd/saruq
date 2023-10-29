@@ -1,4 +1,4 @@
-import Photo from "./cityImg.jpg";
+import Photo from "./cityImg.png";
 import Image from "next/image";
 import Rectangle from "../Rectangle/Rectangle";
 import styles from "./Contracts.module.css";
@@ -14,7 +14,9 @@ export const Contracts = () => {
           <h1 className={styles.label__txt}>Medium to high-value contracts</h1>
         </div>
         <div data-animation="contracts__image" className={styles.image}>
-          <Image src={Photo} fill={true} alt="City" />
+          <div className={styles.image__wrapper}>
+            <Image src={Photo} fill={true} alt="City" />
+          </div>
           <div data-animation="contracts__card" className={styles.card}>
             <p className={styles.subHeading}>Deals from 50 000$</p>
             <p className={styles.description}>

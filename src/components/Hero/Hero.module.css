@@ -29,6 +29,14 @@
   width: calc(var(--width-k) * 1446);
   height: calc(var(--width-k) * 946);
   margin: 0 0 auto auto;
+  overflow: hidden;
+}
+
+.image__wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center calc(var(--width-k) * -760);
 }
 
 .card__wrapper {
@@ -152,9 +160,16 @@
   .image__wrapper {
     position: absolute;
     left: calc(var(--width-k) * 180);
-    width: calc(var(--width-k) * 2088);
+    width: 100%;
     height: 100vh;
-    margin: 0 0 auto auto;
+    overflow: hidden;
+  }
+
+  .image__wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 
   .content {
@@ -193,9 +208,10 @@
 @media (max-width: 767px) {
   .image__wrapper {
     position: static;
-    width: inherit;
+    width: 100%;
     height: 100vh;
     margin: 0 0 auto auto;
+    overflow: hidden;
   }
 
   .content {

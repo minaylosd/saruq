@@ -8,7 +8,10 @@ export const Counterparty = () => {
     <section className="section">
       <div className={styles.content}>
         <div data-animation="counterparty__image" className={styles.image}>
-          <Image src={Photo} fill={true} alt="Counterparty" />
+          <div className={styles.image__wrapper}>
+            <Image src={Photo} fill={true} alt="Counterparty" />
+          </div>
+
           <div className={styles.card}>
             <p className={styles.subHeading}>Deals from 20 000$</p>
             <p className={styles.description}>
