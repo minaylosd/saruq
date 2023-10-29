@@ -25,7 +25,7 @@ export const Goal = () => {
         </div>
         <div data-animation="goal__image" className={styles.image}>
           <div className={styles.image__wrapper}>
-            <Image src={Photo} fill={true} alt="Goal" placeholder="blur" />
+            <Image src={Photo} fill={true} alt="Goal" />
             <div className={styles.gradient}></div>
           </div>
           <div className={styles.card}>

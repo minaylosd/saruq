@@ -15,7 +15,7 @@ export const Contracts = () => {
         </div>
         <div data-animation="contracts__image" className={styles.image}>
           <div className={styles.image__wrapper}>
-            <Image src={Photo} fill={true} alt="City" placeholder="blur" />
+            <Image src={Photo} fill={true} alt="City" />
           </div>
           <div data-animation="contracts__card" className={styles.card}>
             <p className={styles.subHeading}>Deals from 50 000$</p>

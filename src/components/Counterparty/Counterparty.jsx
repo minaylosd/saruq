@@ -9,12 +9,7 @@ export const Counterparty = () => {
       <div className={styles.content}>
         <div data-animation="counterparty__image" className={styles.image}>
           <div className={styles.image__wrapper}>
-            <Image
-              src={Photo}
-              fill={true}
-              alt="Counterparty"
-              placeholder="blur"
-            />
+            <Image src={Photo} fill={true} alt="Counterparty" />
           </div>
 
           <div className={styles.card}>
