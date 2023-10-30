@@ -12,6 +12,31 @@
   --width-k: calc(100vw / 1920);
   --mob-k: calc(100vw / 375);
 }
+@font-face {
+  font-family: "Inter";
+  src: url("/font/Inter-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/font/Inter-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/font/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/font/Inter-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/font/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
 
 * {
   padding: 0;
@@ -22,6 +47,7 @@
 
 body {
   background-color: var(--white);
+  font-family: "Inter", sans-serif;
 }
 
 a {

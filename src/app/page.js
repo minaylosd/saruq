@@ -907,7 +907,7 @@ export default function Home() {
 
         if (isIntentional) {
           const currentTimeStamp = e.timeStamp;
-          if (currentTimeStamp - prevTimeStampRef.current > 1000) {
+          if (currentTimeStamp - prevTimeStampRef.current > 700) {
             setEvents((prev) => [
               {
                 deltaX: e.deltaX,
