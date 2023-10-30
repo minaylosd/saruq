@@ -37,6 +37,7 @@ export default function Home() {
   const isDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
+
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
@@ -1036,11 +1037,7 @@ export default function Home() {
   return (
     <main>
       <Sidebar isMobile={isMobile} />
-      <HeaderComponent
-        isMobile={isMobile}
-        isTablet={isTablet}
-        isDesktop={isDesktop}
-      />
+      <HeaderComponent isMobile={isMobile} />
       <UpBtn isMobile={isMobile} />
       <div className="container">
         <Hero isMobile={isMobile} />
