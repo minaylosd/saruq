@@ -85,7 +85,6 @@
   width: calc(var(--width-k) * 52);
   height: calc(var(--width-k) * 52);
   transform: rotate(180deg);
-  z-index: 150;
 }
 
 .image {
@@ -117,14 +116,14 @@
     rgba(0, 0, 0, 0.37) 100%
   );
   background-blend-mode: multiply, normal, normal;
-  z-index: 120;
+  z-index: 10;
 }
 
 .card {
   position: absolute;
   top: calc(var(--width-k) * 265);
   right: calc(var(--width-k) * 14);
-  z-index: 130;
+  z-index: 30;
   background-color: var(--white);
   width: calc(var(--width-k) * 807);
   height: calc(var(--width-k) * 267);

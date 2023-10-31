@@ -17,7 +17,11 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Lethargy } from "lethargy-ts";
 import { useMediaQuery } from "react-responsive";
 
-const lethargy = new Lethargy();
+const lethargy = new Lethargy({
+  sensitivity: 1,
+  delay: 500,
+  inertiaDecay: 20,
+});
 
 export default function Home() {
   const [events, setEvents] = useState([
@@ -526,7 +530,7 @@ export default function Home() {
                 stages__card: {
                   autoAlpha: 0,
                   x: 0,
-                  y: -1000,
+                  y: -500,
                   scale: 1,
                 },
                 services__card: {
@@ -553,7 +557,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -567,7 +571,7 @@ export default function Home() {
               x: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -584,7 +588,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -600,7 +604,7 @@ export default function Home() {
               x: 0,
               y: 0,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -615,7 +619,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -630,7 +634,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -647,7 +651,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -662,7 +666,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -679,7 +683,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -694,7 +698,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -709,7 +713,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -725,10 +729,11 @@ export default function Home() {
               x: 0,
               y: 0,
               scale: 1,
-              delay: 0.03,
+              duration: 0.5,
+              delay: 0,
               stagger: {
                 each: 0.025,
-                from: "end",
+                from: direction === 1 ? "end" : "start",
               },
               ease: "power2.out",
             }
@@ -744,7 +749,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -759,7 +764,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -775,7 +780,7 @@ export default function Home() {
               x: 0,
               y: 0,
               scale: 1,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               stagger: {
                 each: 0.03,
                 from: "start",
@@ -794,7 +799,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -810,7 +815,7 @@ export default function Home() {
               x: 0,
               y: 0,
               scale: 1,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               stagger: {
                 each: 0.03,
                 from: "start",
@@ -829,7 +834,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -844,7 +849,7 @@ export default function Home() {
               y: 0,
               scale: 1,
               duration: 0.5,
-              delay: 0.4,
+              delay: direction === 1 ? 0.4 : 0.1,
               ease: "power2.out",
             }
           );
@@ -874,7 +879,7 @@ export default function Home() {
               observer.enable();
             },
             duration: 0.1,
-            delay: 0.5,
+            delay: direction === 1 ? 0.5 : 0,
             onComplete: () => {
               animating = false;
               scrollTween = null;
@@ -889,7 +894,7 @@ export default function Home() {
               observer.enable();
             },
             duration: 0.1,
-            delay: 0.5,
+            delay: 0,
             onComplete: () => {
               animating = false;
               scrollTween = null;

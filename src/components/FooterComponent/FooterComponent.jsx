@@ -1,14 +1,12 @@
 import styles from "./FooterComponent.module.css";
 import InfoIcons from "../InfoIcons/InfoIcons";
 import Logo from "../Logo/Logo";
-import Image from "next/image";
-import Background from "./footer.png";
 
 export const FooterComponent = ({ isMobile }) => {
   return (
     <footer className={`${styles.footer} section`}>
       <div className={styles.background}>
-        <Image src={Background} fill={true} alt="background image" />
+        <img src="images/footer.png" alt="background image" />
       </div>
       <div className={styles.index}>
         <div className={styles.info}>

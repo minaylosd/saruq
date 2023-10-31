@@ -1,5 +1,3 @@
-import Photo from "./aboutImg.jpg";
-import Image from "next/image";
 import Square from "../Square/Square";
 import styles from "./About.module.css";
 
@@ -25,7 +23,7 @@ export const About = () => {
           <div className={styles.rotated}>Quality</div>
           <div className={styles.image__wrapper}>
             <div className={styles.image}>
-              <Image src={Photo} fill={true} alt="About" />
+              <img src="images/aboutImg.jpg" alt="About" />
             </div>
           </div>
           <div className={styles.txt__section}>

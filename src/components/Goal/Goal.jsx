@@ -1,5 +1,3 @@
-import Photo from "./clientImg.jpg";
-import Image from "next/image";
 import Square from "../Square/Square";
 import styles from "./Goal.module.css";
 
@@ -25,7 +23,7 @@ export const Goal = () => {
         </div>
         <div data-animation="goal__image" className={styles.image}>
           <div className={styles.image__wrapper}>
-            <Image src={Photo} fill={true} alt="Goal" />
+            <img src="images/clientImg.jpg" alt="Goal" />
             <div className={styles.gradient}></div>
           </div>
           <div className={styles.card}>

@@ -1,5 +1,3 @@
-import Photo from "./heroImg.jpg";
-import Image from "next/image";
 import styles from "./Hero.module.css";
 
 export const Hero = ({ isMobile }) => {
@@ -7,7 +5,7 @@ export const Hero = ({ isMobile }) => {
     <section id="hero" className="section">
       <div className={styles.content}>
         <div data-animation="hero__image" className={styles.image__wrapper}>
-          <Image src={Photo} fill={true} alt="Hero image" />
+          <img src="images/heroImg.jpg" alt="Hero image" />
         </div>
         <div data-animation="hero__card" className={styles.card__wrapper}>
           <nav className={styles.navigation}>

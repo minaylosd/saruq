@@ -69,6 +69,12 @@
   margin-left: calc(var(--width-k) * 27);
   width: calc(var(--width-k) * 498);
   height: calc(var(--width-k) * 497);
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  object-fit: contain;
 }
 
 .txt__section {

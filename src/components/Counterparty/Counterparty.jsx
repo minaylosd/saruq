@@ -1,5 +1,3 @@
-import Photo from "./counterpartyImg.jpg";
-import Image from "next/image";
 import Rectangle from "../Rectangle/Rectangle";
 import styles from "./Counterparty.module.css";
 
@@ -9,9 +7,8 @@ export const Counterparty = () => {
       <div className={styles.content}>
         <div data-animation="counterparty__image" className={styles.image}>
           <div className={styles.image__wrapper}>
-            <Image src={Photo} fill={true} alt="Counterparty" />
+            <img src="images/counterpartyImg.jpg" alt="Counterparty" />
           </div>
-
           <div className={styles.card}>
             <p className={styles.subHeading}>Deals from 20 000$</p>
             <p className={styles.description}>
