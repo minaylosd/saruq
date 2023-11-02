@@ -1,5 +1,3 @@
-import Background from "./background.jpg";
-import Image from "next/image";
 import styles from "./Stages.module.css";
 
 export const Stages = () => {
@@ -26,8 +24,7 @@ export const Stages = () => {
       <div className={styles.content}>
         <div className={styles.position}>
           <div data-animation="stages__image" className={styles.image}>
-            <Image src={Background} fill={true} alt="City" />
-            <div className={styles.gradient}></div>
+            <img src="images/background.jpg" alt="City" />
           </div>
         </div>
         <div className={styles.index}>
