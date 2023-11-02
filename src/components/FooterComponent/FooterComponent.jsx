@@ -6,7 +6,7 @@ export const FooterComponent = ({ isMobile }) => {
   return (
     <footer className={`${styles.footer} section`}>
       <div className={styles.background}>
-        <img src="images/footer.png" alt="background image" />
+        <img src="images/footer.jpg" alt="background image" />
       </div>
       <div className={styles.index}>
         <div className={styles.info}>

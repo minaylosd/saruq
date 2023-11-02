@@ -25,7 +25,6 @@ export const Stages = () => {
         <div className={styles.position}>
           <div data-animation="stages__image" className={styles.image}>
             <img src="images/background.jpg" alt="City" />
-            <div className={styles.gradient}></div>
           </div>
         </div>
         <div className={styles.index}>

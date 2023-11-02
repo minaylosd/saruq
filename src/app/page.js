@@ -16,12 +16,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Lethargy } from "lethargy-ts";
 import { useMediaQuery } from "react-responsive";
+import normalizeWheel from "normalize-wheel";
 
-const lethargy = new Lethargy({
-  sensitivity: 1,
-  delay: 500,
-  inertiaDecay: 20,
-});
+const lethargy = new Lethargy();
 
 export default function Home() {
   const [events, setEvents] = useState([
@@ -37,6 +34,7 @@ export default function Home() {
   const [resizedWidth, setResizedWidth] = useState(0);
 
   const prevTimeStampRef = useRef(0);
+  const prevDeltaYRef = useRef(0);
 
   const isDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
@@ -45,814 +43,528 @@ export default function Home() {
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
+  const fadeOutAnimations = [
+    {
+      elements: [
+        {
+          selector: "[data-animation='hero__image']",
+          start: { autoAlpha: 1, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            y: -500,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+        {
+          selector: "[data-animation='hero__card']",
+          start: { autoAlpha: 1, x: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='about']",
+          start: { autoAlpha: 1, x: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 1500,
+            scale: 0.19,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='goal__heading']",
+          start: { autoAlpha: 1, y: 0 },
+          end: { autoAlpha: 0, y: -500, duration: 0.5, ease: "power2.in" },
+        },
+        {
+          selector: "[data-animation='goal__label']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 300,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+        {
+          selector: "[data-animation='goal__image']",
+          start: { autoAlpha: 1, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='counterparty__label']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: -500,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+        {
+          selector: "[data-animation='counterparty__image']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='contracts__card']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+        {
+          selector: "[data-animation='contracts__label']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+        {
+          selector: "[data-animation='contracts__image']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: -500,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            ease: "power2.in",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='stages__image']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.in",
+          },
+        },
+        {
+          selector: "[data-animation='stages__heading']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.in",
+          },
+        },
+        {
+          selector: "[data-animation='stages__card']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            delay: 0.03,
+            stagger: { each: 0.025, from: "end" },
+            ease: "power2.in",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='services__card']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            delay: 0.4,
+            stagger: { each: 0.03 },
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='services__heading']",
+          start: { autoAlpha: 1, x: 0, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 0,
+            x: 0,
+            y: -1000,
+            scale: 0.44,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+  ];
+  const fadeInAnimations = [
+    {
+      elements: [
+        {
+          selector: "[data-animation='hero__image']",
+          start: { autoAlpha: 0, y: -500, scale: 0.44 },
+          end: {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='hero__card']",
+          start: { autoAlpha: 0, x: -1000, scale: 0.44 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='about']",
+          start: { autoAlpha: 0, x: 0, y: 500, scale: 0.44 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='goal__heading']",
+          start: { autoAlpha: 0, x: 0, y: 0 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='goal__label']",
+          start: { autoAlpha: 0, x: -1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='goal__image']",
+          start: { autoAlpha: 0, x: 1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='counterparty__label']",
+          start: { autoAlpha: 0, x: 1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='counterparty__image']",
+          start: { autoAlpha: 0, x: -1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='contracts__label']",
+          start: { autoAlpha: 0, x: -1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='contracts__image']",
+          start: { autoAlpha: 0, x: 1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='contracts__card']",
+          start: { autoAlpha: 0, x: 1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='stages__card']",
+          start: { autoAlpha: 0, x: 0, y: 1000 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0,
+            stagger: { each: 0.025, from: "end" },
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='stages__image']",
+          start: { autoAlpha: 0, x: 1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='stages__heading']",
+          start: { autoAlpha: 0, x: 1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='services__card']",
+          start: { autoAlpha: 0, x: 0, y: 0, scale: 0.44 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            delay: 0.4,
+            stagger: { each: 0.03, from: "start" },
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='services__heading']",
+          start: { autoAlpha: 0, x: -1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+    {
+      elements: [
+        {
+          selector: "[data-animation='contact__form']",
+          start: { autoAlpha: 0, x: -1000, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            delay: 0.4,
+            stagger: { each: 0.03, from: "start" },
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='contact__heading']",
+          start: { autoAlpha: 0, x: 1500, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+        {
+          selector: "[data-animation='contact__card']",
+          start: { autoAlpha: 0, x: 710, y: 0, scale: 1 },
+          end: {
+            autoAlpha: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            delay: 0.4,
+            ease: "power2.out",
+          },
+        },
+      ],
+    },
+  ];
+
   useEffect(() => {
     if (isTablet) {
       gsap.registerPlugin(ScrollTrigger);
 
       function fadeOut(currentIndex, index, direction) {
-        if (currentIndex === 0 && direction === 1) {
-          gsap.fromTo(
-            "[data-animation='hero__image']",
-            {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              y: -500,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='hero__card']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-        }
-        if (currentIndex === 1 && direction === 1) {
-          gsap.fromTo(
-            "[data-animation='about']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 1500,
-              scale: 0.19,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-        }
-        if (currentIndex === 2 && direction === 1) {
-          gsap.fromTo(
-            "[data-animation='goal__heading']",
-            {
-              autoAlpha: 1,
-              y: 0,
-            },
-            {
-              autoAlpha: 0,
-              y: -500,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='goal__label']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 300,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='goal__image']",
-            {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-        }
-        if (currentIndex === 3 && direction === 1) {
-          gsap.fromTo(
-            "[data-animation='counterparty__label']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: -500,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='counterparty__image']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-        }
-        if (currentIndex === 4 && direction === 1) {
-          gsap.fromTo(
-            "[data-animation='contracts__card']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='contracts__label']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='contracts__image']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: -500,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              ease: "power2.in",
-            }
-          );
-        }
-        if (currentIndex === 5 && direction === 1) {
-          gsap.fromTo(
-            "[data-animation='stages__image']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              delay: 0.4,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='stages__heading']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              delay: 0.4,
-              ease: "power2.in",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='stages__card']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              delay: 0.03,
-              stagger: {
-                each: 0.025,
-                from: "end",
-              },
-              ease: "power2.in",
-            }
-          );
-        }
-        if (currentIndex === 6 && direction === 1) {
-          gsap.fromTo(
-            "[data-animation='services__card']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              delay: 0.4,
-              stagger: {
-                each: 0.03,
-              },
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='services__heading']",
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-            },
-            {
-              autoAlpha: 0,
-              x: 0,
-              y: -1000,
-              scale: 0.44,
-              duration: 0.5,
-              delay: 0.4,
-              ease: "power2.out",
-            }
-          );
+        if (currentIndex < 7 && direction === 1) {
+          fadeOutAnimations[currentIndex].elements.map((element) => {
+            gsap.fromTo(element.selector, element.start, element.end);
+          });
         }
         gotoSection(index, direction);
       }
 
       function fadeIn(index, direction) {
-        const animations =
-          direction === 1
-            ? {
-                hero__image: {
-                  autoAlpha: 0,
-                  y: -500,
-                  scale: 0.44,
-                },
-                hero__card: {
-                  autoAlpha: 0,
-                  x: -1000,
-                  scale: 0.44,
-                },
-                about: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: 500,
-                  scale: 0.44,
-                },
-                goal__heading: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: 0,
-                },
-                goal__label: {
-                  autoAlpha: 0,
-                  x: -1000,
-                  y: 0,
-                  scale: 1,
-                },
-                goal__image: {
-                  autoAlpha: 0,
-                  x: 1000,
-                  y: 0,
-                  scale: 1,
-                },
-                counterparty__label: {
-                  autoAlpha: 0,
-                  x: 1000,
-                  y: 0,
-                  scale: 1,
-                },
-                counterparty__image: {
-                  autoAlpha: 0,
-                  x: -1000,
-                  y: 0,
-                  scale: 1,
-                },
-                contracts__label: {
-                  autoAlpha: 0,
-                  x: -1000,
-                  y: 0,
-                  scale: 1,
-                },
-                contracts__image: {
-                  autoAlpha: 0,
-                  x: 1000,
-                  y: 0,
-                  scale: 1,
-                },
-                contracts__card: {
-                  autoAlpha: 0,
-                  x: 1000,
-                  y: 0,
-                  scale: 1,
-                },
-                stages__card: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: 1000,
-                },
-                stages__image: {
-                  autoAlpha: 0,
-                  x: 1000,
-                  y: 0,
-                  scale: 1,
-                },
-                stages__heading: {
-                  autoAlpha: 0,
-                  x: 1000,
-                  y: 0,
-                  scale: 1,
-                },
-                services__card: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: 0,
-                  scale: 0.44,
-                },
-                services__heading: {
-                  autoAlpha: 0,
-                  x: -1000,
-                  y: 0,
-                  scale: 1,
-                },
-                contact__form: {
-                  autoAlpha: 0,
-                  x: -1000,
-                  y: 0,
-                  scale: 1,
-                },
-                contact__heading: {
-                  autoAlpha: 0,
-                  x: 1500,
-                  y: 0,
-                  scale: 1,
-                },
-                contact__card: {
-                  autoAlpha: 0,
-                  x: 710,
-                  y: 0,
-                  scale: 1,
-                },
-              }
-            : {
-                hero__image: {
-                  autoAlpha: 0,
-                  y: -500,
-                  scale: 0.44,
-                },
-                hero__card: {
-                  autoAlpha: 0,
-                  x: -1000,
-                  scale: 0.44,
-                },
-                about: {
-                  autoAlpha: 0,
-                  x: 1500,
-                  scale: 0.19,
-                },
-                goal__heading: {
-                  autoAlpha: 0,
-                  y: -500,
-                },
-                goal__label: {
-                  autoAlpha: 0,
-                  x: 300,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                goal__image: {
-                  autoAlpha: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                counterparty__label: {
-                  autoAlpha: 0,
-                  x: -500,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                counterparty__image: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                contracts__card: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                contracts__label: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                contracts__image: {
-                  autoAlpha: 0,
-                  x: -500,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                stages__image: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                stages__heading: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                stages__card: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -500,
-                  scale: 1,
-                },
-                services__card: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-                services__heading: {
-                  autoAlpha: 0,
-                  x: 0,
-                  y: -1000,
-                  scale: 0.44,
-                },
-              };
-        if (index === 0) {
-          gsap.fromTo(
-            "[data-animation='hero__image']",
-            {
-              ...animations["hero__image"],
-            },
-            {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='hero__card']",
-            {
-              ...animations["hero__card"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-        if (index === 1) {
-          gsap.fromTo(
-            "[data-animation='about']",
-            {
-              ...animations["about"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-        if (index === 2) {
-          gsap.fromTo(
-            "[data-animation='goal__heading']",
-            {
-              ...animations["goal__heading"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='goal__label']",
-            {
-              ...animations["goal__label"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='goal__image']",
-            {
-              ...animations["goal__image"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-        if (index === 3) {
-          gsap.fromTo(
-            "[data-animation='counterparty__label']",
-            {
-              ...animations["counterparty__label"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='counterparty__image']",
-            {
-              ...animations["counterparty__image"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-        if (index === 4) {
-          gsap.fromTo(
-            "[data-animation='contracts__label']",
-            {
-              ...animations["contracts__label"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='contracts__image']",
-            {
-              ...animations["contracts__image"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='contracts__card']",
-            {
-              ...animations["contracts__card"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-        if (index === 5) {
-          gsap.fromTo(
-            "[data-animation='stages__card']",
-            {
-              ...animations["stages__card"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: 0,
-              stagger: {
-                each: 0.025,
-                from: direction === 1 ? "end" : "start",
-              },
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='stages__image']",
-            {
-              ...animations["stages__image"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='stages__heading']",
-            {
-              ...animations["stages__heading"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-        if (index === 6) {
-          gsap.fromTo(
-            "[data-animation='services__card']",
-            {
-              ...animations["services__card"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              delay: direction === 1 ? 0.4 : 0.1,
-              stagger: {
-                each: 0.03,
-                from: "start",
-              },
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='services__heading']",
-            {
-              ...animations["services__heading"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-        if (index === 7) {
-          gsap.fromTo(
-            "[data-animation='contact__form']",
-            {
-              ...animations["contact__form"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              delay: direction === 1 ? 0.4 : 0.1,
-              stagger: {
-                each: 0.03,
-                from: "start",
-              },
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='contact__heading']",
-            {
-              ...animations["contact__heading"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
-          gsap.fromTo(
-            "[data-animation='contact__card']",
-            {
-              ...animations["contact__card"],
-            },
-            {
-              autoAlpha: 1,
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              delay: direction === 1 ? 0.4 : 0.1,
-              ease: "power2.out",
-            }
-          );
+        if (index < 7) {
+          fadeInAnimations[index].elements.map((element, i) => {
+            gsap.fromTo(
+              element.selector,
+              direction === 1
+                ? element.start
+                : fadeOutAnimations[index].elements[i].end,
+              direction === 1 ? element.end : { ...element.end, delay: 0 }
+            );
+          });
         }
       }
 
@@ -907,23 +619,28 @@ export default function Home() {
 
       const checkWheelEvent = (e) => {
         e.preventDefault();
+
+        const normalized = normalizeWheel(e);
         const isIntentional = lethargy.check(e);
 
         if (e.ctrlKey || e.altKey) return;
 
+        if (Math.abs(normalized.pixelY) < Math.abs(prevDeltaYRef.current) / 1.5)
+          return;
         if (isIntentional) {
           const currentTimeStamp = e.timeStamp;
-          if (currentTimeStamp - prevTimeStampRef.current > 700) {
+          if (currentTimeStamp - prevTimeStampRef.current > 800) {
             setEvents((prev) => [
               {
-                deltaX: e.deltaX,
-                deltaY: e.deltaY,
+                deltaX: normalized.pixelX,
+                deltaY: normalized.pixelY,
                 deltaZ: e.deltaZ,
                 timeStamp: currentTimeStamp,
                 isIntentional,
               },
             ]);
             prevTimeStampRef.current = currentTimeStamp;
+            prevDeltaYRef.current = normalized.pixelY;
             handleWheel(e);
           }
         }
@@ -946,7 +663,6 @@ export default function Home() {
             ? fadeOut(currentIndex, currentIndex + 1, 1)
             : fadeOut(currentIndex, currentIndex - 1, -1);
         }
-        e.wheelDeltaY < 0;
       }
 
       function handleUpBtn() {
@@ -999,12 +715,9 @@ export default function Home() {
       }
 
       const handleResize = () => {
-        console.log("resize");
         setResizedWidth(window.innerWidth);
         fadeIn(0, currentIndex, -1);
       };
-
-      // gotoSection(0, 1);
 
       const navLinks = document.querySelectorAll('[data-scroll="scroll__nav"]');
       navLinks.forEach((link) => {

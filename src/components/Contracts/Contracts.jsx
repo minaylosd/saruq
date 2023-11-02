@@ -13,7 +13,7 @@ export const Contracts = () => {
         </div>
         <div data-animation="contracts__image" className={styles.image}>
           <div className={styles.image__wrapper}>
-            <img src="images/cityImg.png" alt="City" />
+            <img src="images/cityImg.jpg" alt="City" />
           </div>
           <div data-animation="contracts__card" className={styles.card}>
             <p className={styles.subHeading}>Deals from 50 000$</p>
