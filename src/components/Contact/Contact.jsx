@@ -2,13 +2,61 @@ import styles from "./Contact.module.css";
 import Rectangle from "../Rectangle/Rectangle";
 import WideRectangle from "./WideRectangle";
 import InfoIcons from "../InfoIcons/InfoIcons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const initValues = { name: "", email: "", message: "" };
 
 const initState = { values: initValues };
 
-export const Contact = () => {
+export const Modal = ({
+  modalMsg,
+  isModalOpen,
+  openModalTween,
+  closeModalTween,
+}) => {
+  const handleWheel = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
+  useEffect(() => {
+    document.getElementById("modal").addEventListener("wheel", handleWheel);
+    openModalTween();
+  }, [isModalOpen]);
+  return (
+    <>
+      <div
+        id="modal"
+        data-animation="modal-bg"
+        className={styles.modal__background}
+      >
+        <div data-animation="modal-card" className={styles.modal__card}>
+          <div className={styles.modal__heading__wrapper}>
+            <h2 className={styles.modal__heading}>{modalMsg.heading}</h2>
+            <div onClick={closeModalTween} className={styles.cross}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={"100%"}
+                height={"100%"}
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  stroke="var(--primary)"
+                  strokeLinecap="round"
+                  strokeWidth={2}
+                  d="M3.414 3 21 20.586M3 21 21 3"
+                />
+              </svg>
+            </div>
+          </div>
+          <p className={styles.modal__txt}>{modalMsg.text}</p>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const Contact = ({ openModal }) => {
   const [state, setState] = useState(initState);
 
   const { values } = state;
@@ -19,6 +67,52 @@ export const Contact = () => {
       values: { ...prev.values, [target.name]: target.value },
     }));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("email", values.email);
+    formData.append("message", values.message);
+
+    let emailSent = false;
+
+    try {
+      const response = await fetch("../phpmailer/sendEmail.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        if (data.success) {
+          setState(initState);
+          emailSent = true;
+        } else {
+          handleEmailError(data.message);
+        }
+      } else {
+        handleNetworkError();
+      }
+    } catch (error) {
+      handleFetchError(error);
+    }
+    openModal(emailSent);
+  };
+
+  function handleEmailError(errorMessage) {
+    console.error(errorMessage);
+  }
+
+  function handleNetworkError() {
+    console.error("Network error");
+  }
+
+  function handleFetchError(error) {
+    console.error("Error:", error);
+  }
 
   return (
     <section id="contact" className="section">
@@ -39,7 +133,7 @@ export const Contact = () => {
         </div>
       </div>
       <div className={styles.content}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div data-animation="contact__form" className={styles.form__group}>
             <input
               className={styles.form__input}
@@ -95,8 +189,8 @@ export const Contact = () => {
             <div className={styles.icon}>
               <InfoIcons type="email" />
             </div>
-            <a href="mailto:info@ips-pacific.com" className={styles.card__text}>
-              info@ips-pacific.com
+            <a href="mailto:info@saruqtijara.com" className={styles.card__text}>
+              info@saruqtijara.com
             </a>
           </div>
           <div className={styles.card__item}>

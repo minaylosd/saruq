@@ -106,7 +106,7 @@ input {
 
 input:focus {
   outline: none;
-  border-bottom: calc(var(--width-k) * 2) solid rgba(0, 0, 0, 1);
+  border-bottom: calc(var(--width-k) * 1) solid rgba(0, 0, 0, 1);
 }
 
 input::placeholder {
@@ -128,12 +128,16 @@ textarea {
 
 textarea:focus {
   outline: none;
-  border-bottom: calc(var(--width-k) * 2) solid rgba(0, 0, 0, 1);
+  border-bottom: calc(var(--width-k) * 1) solid rgba(0, 0, 0, 1);
 }
 
 textarea::placeholder {
   font-family: "Inter", sans-serif;
   color: rgba(182, 182, 182, 1);
+}
+
+#contact {
+  position: relative;
 }
 
 @media (max-width: 1024px) {

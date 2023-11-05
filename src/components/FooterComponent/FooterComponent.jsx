@@ -14,8 +14,8 @@ export const FooterComponent = ({ isMobile }) => {
             <div className={styles.icon}>
               <InfoIcons type="email" />
             </div>
-            <a href="mailto:info@ips-pacific.com" className={styles.card__text}>
-              info@ips-pacific.com
+            <a href="mailto:info@saruqtijara.com" className={styles.card__text}>
+              info@saruqtijara.com
             </a>
           </div>
           <div className={styles.card__item}>

@@ -69,7 +69,14 @@
   height: calc(var(--width-k) * 72);
   padding: calc(var(--width-k) * 14) calc(var(--width-k) * 36);
   border-radius: calc(var(--width-k) * 4);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
+
+.form__button:active {
+  background-color: var(--secondary-faded);
+}
+
 .card {
   background-color: var(--primary);
   border-radius: calc(var(--width-k) * 4);
@@ -78,6 +85,7 @@
     calc(var(--width-k) * 53);
   margin-bottom: auto;
 }
+
 .card__heading__wrapper {
   display: flex;
   gap: calc(var(--width-k) * 21);
@@ -113,6 +121,58 @@
   font-weight: 300;
   line-height: normal;
   max-width: calc(var(--width-k) * 459);
+}
+
+.modal__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  width: calc(var(--width-k) * 652);
+  height: fit-content;
+  border-radius: calc(var(--width-k) * 4);
+  padding: calc(var(--width-k) * 32);
+  z-index: 1001;
+}
+
+.modal__heading__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--width-k) * 21);
+  margin-bottom: calc(var(--width-k) * 32);
+}
+
+.modal__heading {
+  color: var(--primary);
+  font-size: calc(var(--width-k) * 51.35);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.modal__txt {
+  font-size: calc(var(--width-k) * 28);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: calc(var(--width-k) * 32);
+}
+
+.cross {
+  height: calc(var(--width-k) * 32);
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {
@@ -194,5 +254,22 @@
   }
   .card__item {
     margin-bottom: calc(var(--width-k) * 20);
+  }
+  .modal__card {
+    width: calc(var(--width-k) * 340);
+    padding: calc(var(--width-k) * 32);
+  }
+  .modal__heading__wrapper {
+    margin-bottom: calc(var(--width-k) * 24);
+  }
+  .modal__heading {
+    font-size: calc(var(--width-k) * 32);
+  }
+  .modal__txt {
+    font-size: calc(var(--width-k) * 14);
+    margin-bottom: 0;
+  }
+  .cross {
+    height: calc(var(--width-k) * 24);
   }
 }

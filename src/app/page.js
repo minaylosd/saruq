@@ -17,6 +17,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Lethargy } from "lethargy-ts";
 import { useMediaQuery } from "react-responsive";
 import normalizeWheel from "normalize-wheel";
+import { Modal } from "@/components/Contact/Contact";
 
 const lethargy = new Lethargy();
 
@@ -30,6 +31,56 @@ export default function Home() {
       isIntentional: false,
     },
   ]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalMsgRef = useRef({ heading: "", text: "" });
+
+  function openModal(emailSent) {
+    if (emailSent) {
+      modalMsgRef.current = {
+        heading: "Thank You!",
+        text: "Message Sent! Thank you for contacting us",
+      };
+    } else {
+      modalMsgRef.current = {
+        heading: "We are sorry!",
+        text: "Something went wrong. Please try again later",
+      };
+    }
+    setIsModalOpen(true);
+  }
+
+  function openModalTween() {
+    gsap.fromTo(
+      "[data-animation='modal-bg']",
+      { autoAlpha: 0 },
+      { autoAlpha: 1, duration: 0.2 }
+    );
+    gsap.fromTo(
+      "[data-animation='modal-card']",
+      { y: -100, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.3, delay: 0.2 }
+    );
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
+  function closeModalTween(onComplete) {
+    gsap.to("[data-animation='modal-card']", {
+      y: -100,
+      autoAlpha: 0,
+      onComplete: () => closeModal(),
+      duration: 0.3,
+    });
+    gsap.to("[data-animation='modal-bg']", {
+      autoAlpha: 0,
+      onComplete: () => closeModal(),
+      duration: 0.2,
+      delay: 0.3,
+    });
+  }
 
   const [resizedWidth, setResizedWidth] = useState(0);
 
@@ -617,11 +668,13 @@ export default function Home() {
         fadeIn(index, direction);
       }
 
-      const checkWheelEvent = (e) => {
+      const checkWheelEvent = (e, isModalOpen) => {
         e.preventDefault();
 
         const normalized = normalizeWheel(e);
         const isIntentional = lethargy.check(e);
+
+        if (isModalOpen) return;
 
         if (e.ctrlKey || e.altKey) return;
 
@@ -724,9 +777,11 @@ export default function Home() {
         link.addEventListener("click", handleNav);
       });
 
+      const main = document.getElementById("main");
+
       window.addEventListener("resize", handleResize);
       document.querySelector(".up__btn").addEventListener("click", handleUpBtn);
-      document.addEventListener("wheel", checkWheelEvent, { passive: false });
+      main.addEventListener("wheel", checkWheelEvent, { passive: false });
       document.addEventListener("touchstart", handleTouchStart, {
         passive: true,
       });
@@ -737,7 +792,7 @@ export default function Home() {
         passive: true,
       });
       return () => {
-        document.removeEventListener("wheel", checkWheelEvent);
+        main.removeEventListener("wheel", checkWheelEvent);
         document.removeEventListener("touchstart", handleTouchStart);
         document.removeEventListener("touchmove", handleTouchMove);
         document.removeEventListener("touchend", handleTouchEnd);
@@ -746,17 +801,19 @@ export default function Home() {
     }
   }, [resizedWidth]);
 
-  const divStyle = {
-    height: "100vh",
-    width: "100vw",
-    overflow: "hidden",
-  };
-
   return (
-    <main>
+    <main id="main">
       <Sidebar isMobile={isMobile} />
       <HeaderComponent isMobile={isMobile} />
       <UpBtn isMobile={isMobile} />
+      {isModalOpen && (
+        <Modal
+          modalMsg={modalMsgRef.current}
+          openModalTween={openModalTween}
+          closeModalTween={closeModalTween}
+          isModalOpen={isModalOpen}
+        />
+      )}
       <div className="container">
         <Hero isMobile={isMobile} />
         <About />
@@ -765,7 +822,7 @@ export default function Home() {
         <Contracts />
         <Stages />
         <Services />
-        <Contact />
+        <Contact openModal={openModal} />
         <FooterComponent isMobile={isMobile} />
       </div>
     </main>
