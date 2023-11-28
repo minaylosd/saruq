@@ -31,7 +31,7 @@ export const Hero = ({ isMobile }) => {
             <p className={styles.sub_heading}>Confidence in every step</p>
             <div className={styles.divider}></div>
             <p className={styles.motto}>
-              Doing business with emirates was never been so easy
+              Doing business with emirates has never been so easy
             </p>
             <div className={styles.btn__wrapper}>
               <a

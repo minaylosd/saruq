@@ -79,7 +79,7 @@ export const Contact = ({ openModal }) => {
     let emailSent = false;
 
     try {
-      const response = await fetch("../phpmailer/sendEmail.php", {
+      const response = await fetch("./phpmailer/sendEmail.php", {
         method: "POST",
         body: formData,
       });
@@ -197,8 +197,8 @@ export const Contact = ({ openModal }) => {
             <div className={styles.icon}>
               <InfoIcons type="phone" />
             </div>
-            <a href="tel:+85225308135" className={styles.card__text}>
-              +852 2530 8135
+            <a href="tel:+971568082046" className={styles.card__text}>
+              +971 56 808 2046
             </a>
           </div>
           <div className={styles.card__item}>
@@ -206,8 +206,8 @@ export const Contact = ({ openModal }) => {
               <InfoIcons type="address" />
             </div>
             <p className={styles.card__text}>
-              Suite 2207-09, 22/F, Tower Two, Lippo Centre, 89 Queensway,
-              Admiralty, Hong Kong
+              Business Center 1, M Floor, The Meydan Hotel, Nad Al Sheba, Dubai,
+              U.A.E
             </p>
           </div>
         </div>

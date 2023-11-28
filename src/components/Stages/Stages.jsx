@@ -4,15 +4,15 @@ export const Stages = () => {
   const cardItems = [
     {
       id: "#1",
-      txt: "Receiving a request, searching for a manufacturer, offering options, getting approval for selected manufacturer. Logistics calculation, contract signing.",
+      txt: "Receiving a request, searching for a supplier, offering options, getting approval for selected supplier. Logistics calculation, contract signing.",
     },
     {
       id: "#2",
-      txt: "Placing an order with the manufacturer, agreeing on the production delivery dates, making advance payment, supervising contract execution",
+      txt: "Placing an order with the supplier, agreeing on the production delivery dates, making advance payment, supervising contract execution",
     },
     {
       id: "#3",
-      txt: "Quality control, shipment control, balance payments for goods, customs clearance in China.",
+      txt: "Quality control, shipment control, balance payments for goods, customs clearance in the origin country.",
     },
     {
       id: "#4",

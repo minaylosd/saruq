@@ -23,7 +23,7 @@ export const Contracts = () => {
               challenging tasks as even minor improvements may give tangible
               results. From negotiating with existing suppliers about the best
               logistics route and forms of payments to restructuring your
-              company that unveils hidden advantages. Whether it’s streamlining
+              company that unveils hidden advantages. Whether it is streamlining
               operations or identifying cost-saving opportunities, we are here
               to help.
             </p>

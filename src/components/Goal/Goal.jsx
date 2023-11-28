@@ -33,8 +33,8 @@ export const Goal = () => {
               being the primary one. For low and mid-priced goods, orders must
               be a multiple of the container, while air delivery suits
               high-value items. Service efficiency depends on application
-              accuracy, and if an order doesn&apos;t meet minimum requirements,
-              the company will suggest volume adjustment.
+              accuracy, and if an order does not meet minimum requirements, the
+              company will suggest volume adjustment.
             </p>
           </div>
         </div>

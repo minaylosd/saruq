@@ -86,10 +86,6 @@
   text-transform: uppercase;
 }
 
-.card:last-child .card__heading {
-  font-size: calc(var(--width-k) * 14.2);
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -108,7 +104,6 @@
   font-style: normal;
   font-weight: 300;
   line-height: normal;
-  text-transform: capitalize;
   line-height: 163.523%;
 }
 
